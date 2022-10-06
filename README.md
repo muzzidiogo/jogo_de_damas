@@ -1,5 +1,6 @@
 # Projeto Pds2 - Jogo de Damas
-<h2>Desenvolvedores:</h2> 
-<p>Elias Miranda Nacif Rocha</p>
-<p>Diogo Muzzi</p>
-<p>Samuel</p>
+## Desenvolvedores:
+
+1. Elias Miranda Nacif Rocha
+2. Diogo Muzzi
+3. Samuel Felipe Verçosa Gonçalves
