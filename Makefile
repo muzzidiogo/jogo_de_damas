@@ -18,20 +18,25 @@ INC := -I include/ -I third_party/
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $< -lncurses -ltinfo
 
 main: $(OBJECTS)
 	@mkdir -p $(BINDIR)
-	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/main
+	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/main -lncurses -ltinfo
 
 tests: $(OBJECTS)
 	@mkdir -p $(BINDIR)
 	$(CC) $(CFLAGS) $(INC) $(TESTER) $(TSTSOURCES) $^ -o $(BINDIR)/tester
 	$(BINDIR)/tester
 
-all: main
+all: main	
 
 clean:
 	$(RM) -r $(OBJDIR)/* $(BINDIR)/* coverage/* *.gcda *.gcno
+
+run:
+	make clean
+	make main
+	$(BINDIR)/main
 
 .PHONY: clean
