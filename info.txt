@@ -1,0 +1,16 @@
+                            JOGO DE DAMAS
+                            
+* Para se usar o menu aperte duas vezes a letra inicial de cada 
+  comando (uma para ativar e outra para confirmar):
+    s:Sair    i:Info    r:Reiniciar/Retornar
+
+* Para fazer a jogada digite 'j' e escreva o comando:
+    'm Xpeça Ypeça Xlocal Ylocal' : mover peça para local
+                                    são dados as coordenadas da peça
+                                    e local final com inteiros
+
+    'c Xpeça1 Ypeça1 Xpeça2 Ypeça2' : capturar peça2 com a peça1
+                                      são dados as coordenadas da peça1
+                                      e peça2 com inteiros
+    '-' : deletar caracteres
+    '!' : sair do modo "jogada"
