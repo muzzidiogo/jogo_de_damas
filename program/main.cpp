@@ -61,8 +61,13 @@ void desenhar(WINDOW *win, int pontoInicial, Tabuleiro_t &tabuleiro) {
         }
     }
 
+    wattron(win, COLOR_PAIR(VERDE));
+    mvwprintw(win, (LINHAS-2), 1, "Para informações aperte duas vezes 'i'");
+    wattroff(win, COLOR_PAIR(VERDE));
 }
 
+/// @brief Apaga toda a tela para poder escrever de novo
+/// @param win Equivale a um ponteiro apontando para a janela sendo usada na interface
 void ApagarTela(WINDOW *win) {
     for(int i=1; i<(LINHAS-1);i++) {
         mvwprintw(win, i, 1, "%s", CLEAR_LINES);
@@ -162,7 +167,6 @@ int main(int argc, char const *argv[]) {
     // =====================
 
     wattron(win, COLOR_PAIR(VERDE));
-    mvwprintw(win, (LINHAS-2), 1, "Para informações aperte duas vezes 'i'");
     mvwprintw(win, (LINHAS-3), 1, "Para começar sua jogada aperte 'j'");
     wattroff(win, COLOR_PAIR(VERDE));
 
@@ -172,7 +176,7 @@ int main(int argc, char const *argv[]) {
         ch = wgetch(win);
         switch (ch)
         {
-        case 'r':
+        case 'r':  // COMANDO REINICIAR
             sair = false;
             info = false;
             if(!reiniciar) {
@@ -190,7 +194,7 @@ int main(int argc, char const *argv[]) {
             }
             break;
         
-        case 'i':
+        case 'i':   // COMANDO INFORMAÇÕES 
             sair = false;
             reiniciar = false;
             if(!info) {
@@ -209,7 +213,7 @@ int main(int argc, char const *argv[]) {
             }
             break;
 
-        case 's':
+        case 's':   //  COMANDO SAIR
             reiniciar=false;
             info=false;
             if(!sair) {
@@ -225,7 +229,7 @@ int main(int argc, char const *argv[]) {
             }
             break;
 
-        case  'j':
+        case  'j':  //  COMANDO JOGAR
         {
             // Reiniciar elementos
             sair=false;
@@ -240,7 +244,15 @@ int main(int argc, char const *argv[]) {
             mvwprintw(win, (LINHAS-3), 1, "Jogada: ");
             std::string comando = LerComando(win, (LINHAS-3), 10);
             mvwprintw(win, (LINHAS-3), 1, "%s", CLEAR_LINES);
-            mvwprintw(win, 1, 1, "%s", comando.c_str());
+            if(comando.size() == 10 || comando == "") {
+                mvwprintw(win, 1, COLUNAS-comando.size(), "%s", comando.c_str());
+            }
+            else {
+                wattron(win, COLOR_PAIR(VERMELHO));
+                mvwprintw(win, (LINHAS-3), 1, "Comando inválido, tente novamente");              
+                wattroff(win, COLOR_PAIR(VERMELHO));
+            }
+
             desenhar(win, COLUNAS, tabuleiro);
         }
         break; 
