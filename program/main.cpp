@@ -118,7 +118,7 @@ std::string LerComando(WINDOW *win, int pontoYinicial, int pontoXinicial) {
     while(ch != '\n') {
         ch = wgetch(win);
         // DELETAR CARACTERES
-        if(ch == '-') {
+        if(ch == 127) {
             if(linha.size() > 0) linha.pop_back();
         }
         // SAIR DA FUNÇÃO
