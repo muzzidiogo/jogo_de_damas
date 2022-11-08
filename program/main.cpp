@@ -130,7 +130,7 @@ std::string LerComando(WINDOW *win, int pontoYinicial, int pontoXinicial) {
         }
         const char *linha_c = linha.c_str();
         // SE O COMANDO NÃO FOR VÁLIDO ESCREVER EM VERMELHO
-        if(linha[0] != 'm' && linha[0] != 'c') {
+        if(linha[0] != 'm') {
             wattron(win, COLOR_PAIR(VERMELHO));
             mvwprintw(win,pontoYinicial, pontoXinicial, "%s", linha_c);
             mvwprintw(win,pontoYinicial, pontoXinicial+linha.size(), "%s", SMALL_CLEAR);
