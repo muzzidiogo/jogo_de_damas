@@ -9,8 +9,4 @@
                                     são dados as coordenadas da peça
                                     e local final com inteiros
 
-    'c Xpeça1 Ypeça1 Xpeça2 Ypeça2' : capturar peça2 com a peça1
-                                      são dados as coordenadas da peça1
-                                      e peça2 com inteiros
-    '-' : deletar caracteres
     '!' : sair do modo "jogada"
