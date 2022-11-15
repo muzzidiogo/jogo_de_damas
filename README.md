@@ -17,7 +17,7 @@
 
 5. Eu, como **jogador**, desejo **ser avisado se as minhas jogadas são válidas ou não**, para que **eu consiga seguir as regras do jogo corretamente**.
 
-6. Eu, como **jogador**, gostaria de **visualizar o tabuleiro e o jogo por meio de uma interface no terminal**, para que **a progressão do jogo seja facilitada**.
+6. Eu, como **jogador**, gostaria de **visualizar o tabuleiro e o jogo por meio de uma interface no terminal**, para que **a    progressão do jogo seja facilitada**.
 
 7. Eu, como **jogador**, desejo que o **computador faça jogadas coerentes**, para que **as partidas sejam competitivas**.
 
