@@ -24,6 +24,7 @@ InterfaceGrafica::InterfaceGrafica(Tabuleiro_t *tabuleiro, unsigned int linhas, 
 void InterfaceGrafica::desenhar_main() {
     box(_win, 0, 0);
     wrefresh(_win);
+    apagar_tela();
 
     //Gerar o MENU
     wattron(_win, A_STANDOUT);
@@ -204,7 +205,16 @@ void InterfaceGrafica::adicionar_jogada(std::string jogada) {
         }
     }
     _memJogadas[0] = _memJogadas[1];
-    _memJogadas[1] = jogada;
+    _memJogadas[1] = _memJogadas[2];
+    _memJogadas[2] = jogada;
+}
+
+void InterfaceGrafica::reiniciar() {
+    for(auto it = _memJogadas.begin(); it != _memJogadas.end(); it++) {
+        *it = "";
+    }
+    _placarCapturas[Jogador::X] = 0;
+    _placarCapturas[Jogador::O] = 0;
 }
 
 void InterfaceGrafica::somarPlacarRodadas(int jogador, unsigned int valor) {
