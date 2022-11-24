@@ -12,3 +12,5 @@
                                       com numeros inteiros
 
       '!' : sair do modo "jogada"
+
+Feito por Samuel Felipe, Elias Nacif e Diogo Muzzi
