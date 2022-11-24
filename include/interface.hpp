@@ -25,7 +25,7 @@ class InterfaceGrafica {
         std::array<int, 2> _placarRodadas = {0,0};
         std::array<int, 2> _placarCapturas = {0,0};
         Tabuleiro_t* _tabuleiro;
-        std::array<std::string,2> _memJogadas = {"",""};
+        std::array<std::string,3> _memJogadas = {"","",""};
 
     public:
         /// @brief Construtor
@@ -65,8 +65,8 @@ class InterfaceGrafica {
         /// @param jogada string da jogada que será armazenada
         void adicionar_jogada(std::string jogada);
 
-        /// @brief Reinicia a jogada 
-        void reiniciar_rodada();
+        /// @brief Apaga a memória de jogadas 
+        void reiniciar();
 
         /// @brief Retorna o ponteiro da janela produzida 
         /// @return
