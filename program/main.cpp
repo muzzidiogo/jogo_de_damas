@@ -36,6 +36,7 @@ int main(int argc, char const *argv[]) {
             }
             else {
                 tabuleiro = Tabuleiro_t();
+                interface.reiniciar();
                 interface.desenhar_main();
                 reiniciar = false;
             }
@@ -51,7 +52,6 @@ int main(int argc, char const *argv[]) {
             else {
                 info = false;
                 interface.desenhar_info();
-                interface.apagar_tela();
                 interface.desenhar_main();
             }
             break;
