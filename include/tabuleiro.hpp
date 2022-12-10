@@ -10,7 +10,7 @@ private:
     std::vector<Peca_t> _tabuleiro;
 public:
     Tabuleiro_t();
-    void RemoverPeca(Peca_t peca);
+    void RemoverPeca(Posicao_t posicao);
     bool VerificarPosicao(Posicao_t posicao);
     bool AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca);
     std::vector<Peca_t> get_tabuleiro();

@@ -6,8 +6,8 @@ Peca_t::Peca_t(bool dama, int cor, Posicao_t posicao){
     _posicao = posicao;
 }
 
-void Peca_t::Capturar_Peca(Posicao_t posicao, Peca_t pecaCapturada) {
-
+void Peca_t::Andar(Posicao_t novaPosicao){
+    _posicao = novaPosicao;
 }
 
 Posicao_t Peca_t::get_posicao() {

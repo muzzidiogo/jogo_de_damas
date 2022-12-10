@@ -20,7 +20,6 @@ private:
 public:
     Peca_t(bool dama, int cor, Posicao_t posicao);
     void Andar(Posicao_t posicao);
-    void Capturar_Peca(Posicao_t posicao, Peca_t pecaCapturada);
     Posicao_t get_posicao();
     int get_cor();
 };
