@@ -12,6 +12,7 @@ class Engine {
         std::map<Peca_t, int> resultados;
     public:
         void rodaEngine(Tabuleiro_t _tabuleiro, char _cor);
+        std::map<Peca_t, int> get_resultados();
     
 };
 #endif
