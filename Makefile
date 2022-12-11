@@ -26,7 +26,7 @@ main: $(OBJECTS)
 
 tests: $(OBJECTS)
 	@mkdir -p $(BINDIR)
-	$(CC) $(CFLAGS) $(INC) $(TESTER) $(TSTSOURCES) $^ -o $(BINDIR)/tester
+	$(CC) $(CFLAGS) $(INC) $(TESTER) $(TSTSOURCES) $^ -o $(BINDIR)/tester -lncurses
 	$(BINDIR)/tester
 
 all: main	
