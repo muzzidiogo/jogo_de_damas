@@ -17,6 +17,7 @@ private:
     bool _dama;
     int _cor;
     Posicao_t _posicao;
+    int quantidadeJogadas = 0;
 public:
     Peca_t(bool dama, int cor, Posicao_t posicao);
     void Andar(Posicao_t posicao);

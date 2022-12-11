@@ -5,14 +5,12 @@
 #include "peca.hpp"
 #include "tabuleiro.hpp"
 
+
 class Engine {
     private:
-        Tabuleiro_t tabuleiro;
-        char cor;
-        std::map<Peca_t, int> resultados;
+        int quantidadeDeJogadas, quantidadeDeJogadasMax;
     public:
+        bool contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca, char _cor);
         void rodaEngine(Tabuleiro_t _tabuleiro, char _cor);
-        std::map<Peca_t, int> get_resultados();
-    
 };
 #endif
