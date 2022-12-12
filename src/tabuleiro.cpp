@@ -41,11 +41,11 @@ bool Tabuleiro_t::VerificarPosicao(Posicao_t posicao){
 
 bool Tabuleiro_t::AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca){
     if(VerificarPosicao(novaPosicao)){
-        RemoverPeca(novaPosicao); //Resolver: remove mesmo se for peÃ§a da mesma cor
+        RemoverPeca(novaPosicao); //Resolver: remove mesmo se for peð§a da mesma cor
         Posicao_t posicaoDeCaptura;
         posicaoDeCaptura.coluna = novaPosicao.coluna + 1;
         posicaoDeCaptura.linha = novaPosicao.linha + 1;
-        return true; //Resolver: a posiÃ§Ã£o apÃ³s captura deve ser na mesma direÃ§Ã£o em que a peÃ§a movimentou.
+        return true; //Resolver: a posið§ð£o apð³s captura deve ser na mesma direð§ð£o em que a peð§a movimentou.
     }
     peca.Andar(novaPosicao);
     return true;
@@ -79,16 +79,4 @@ void Tabuleiro_t::capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int l
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     pecaJogada.Andar({linha + linhasMover, coluna + colunasMover});
     this->RemoverPeca(posicaoRemover);
-}
-
-Peca_t Tabuleiro_t::retornaMaior() {
-    Peca_t maior; //foi necessÃ¡rio criar um construtor vazio pra fazer isso;
-    maior.set_quantidadeJogadas(-1);
-
-    for (Peca_t peca : _tabuleiro) {
-        if (peca.get_quantidadeJogadas() > maior.get_quantidadeJogadas()) {
-            maior = peca;
-        }
-    }
-    return maior;
 }
