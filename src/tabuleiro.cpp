@@ -18,7 +18,7 @@ Tabuleiro_t::Tabuleiro_t() {
     }
 }
 
-void Tabuleiro_t::RemoverPeca(Posicao_t posicao) {
+void Tabuleiro_t::RemoverPeca(Posicao_t posicao) { //fonte de bug???
     for(auto it = _tabuleiro.begin(); it != _tabuleiro.end(); it++) {
         if((it->get_posicao().coluna == posicao.coluna) &&
            (it->get_posicao().linha == posicao.linha))
@@ -53,4 +53,30 @@ bool Tabuleiro_t::AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca){
 
 std::vector<Peca_t> Tabuleiro_t::get_tabuleiro(){
     return _tabuleiro;
+}
+
+bool Tabuleiro_t::procura_peca(int linha, int coluna, char cor) {
+    for (Peca_t peca : _tabuleiro) {
+        if (peca.get_posicao().linha == linha && 
+           peca.get_posicao().coluna == coluna && 
+           peca.get_cor() == cor) {
+            return true;    
+        } 
+    }
+    return false;
+}
+
+void Tabuleiro_t::copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo) {
+    _tabuleiro.clear();
+
+    for (Peca_t peca : tabuleiroAntigo.get_tabuleiro()) {
+        _tabuleiro.push_back(peca);
+    }
+}
+
+void Tabuleiro_t::capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover) {
+    unsigned int linha = pecaJogada.get_posicao().linha;
+    unsigned int coluna = pecaJogada.get_posicao().coluna;
+    pecaJogada.Andar({linha + linhasMover, coluna + colunasMover});
+    this->RemoverPeca(posicaoRemover);
 }

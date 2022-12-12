@@ -1,72 +1,79 @@
 #include "../include/engine.hpp"
 
-bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca, char _cor) {
-    int l = _peca.get_posicao().linha;
-    int c =  _peca.get_posicao().coluna;
+bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
+    unsigned int linha = _peca.get_posicao().linha;
+    unsigned int coluna = _peca.get_posicao().coluna;
+    char cor = _peca.get_cor();
+    char outraCor = 'b';
+    if (cor == 'b') outraCor = 'p';
+
+    if (linha - 2 >= 0 && coluna - 2 >= 0 &&  //se a jogada puder ser feita
+      !_tabuleiro.procura_peca(linha - 2, coluna - 2, cor) && //e houver espaço para a captura 
+      !_tabuleiro.procura_peca(linha - 2, coluna - 2, outraCor) &&
+      _tabuleiro.procura_peca(linha - 1, coluna - 1, outraCor)) { //e uma peça inimiga estiver na diagonal
+        
+        Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificações necessárias para a contagem
+        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
+        tabuleiroNovo.capturaPeca(_peca, {linha - 1, coluna - 1}, -2, -2); //será que a peça vai alterar sua posição???
+        quantidadeDeJogadas++;
+
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if(contaJogadas(tabuleiroNovo, _peca)) return 1;    
+    }
+
+    if (linha + 2 < 8 && coluna + 2 < 8 && //0 a 7, 8 pecas. 8 é o max + 1  
+      !_tabuleiro.procura_peca(linha + 2, coluna + 2, cor) &&
+      !_tabuleiro.procura_peca(linha + 2, coluna + 2, outraCor) &&
+      _tabuleiro.procura_peca(linha + 1, coluna + 1, outraCor)) { 
+        
+        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
+        tabuleiroNovo.capturaPeca(_peca, {linha + 1, coluna + 1}, 2, 2);
+        quantidadeDeJogadas++;
+
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if(contaJogadas(tabuleiroNovo, _peca)) return 1;    
+    }
+
+    if (linha + 2 < 8 && coluna - 2 >= 0  &&   
+      !_tabuleiro.procura_peca(linha + 2, coluna - 2, cor) &&
+      !_tabuleiro.procura_peca(linha + 2, coluna - 2, outraCor) &&
+      _tabuleiro.procura_peca(linha + 1, coluna - 1, outraCor)) { 
+        
+        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
+        tabuleiroNovo.capturaPeca(_peca, {linha + 1, coluna - 1}, 2, -2);
+        quantidadeDeJogadas++;
+
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if(contaJogadas(tabuleiroNovo, _peca)) return 1;    
+    }
     
-    if (l - 2 >= 0 && c - 2 >= 0) {
-        if(_tabuleiro[l - 1][c - 1] == 'p' && _tabuleiro[l - 2][c - 2] == 'o') {
-            char **_tabuleiroNovo = cria_Tabuleiro(s);
-            copia_Tabuleiro(s, _tabuleiro, _tabuleiroNovo);
-            _tabuleiroNovo[l - 1][c - 1] = 'o';
-            _tabuleiroNovo[l][c] = 'o';
-            _tabuleiroNovo[l - 2][c - 2] = 'b';
-            quantidadeDeJogadas++;
-            if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
-            if(contaJogadas(s, _tabuleiroNovo, l - 2, c - 2)) return 1;    
-            libera_Tabuleiro(s, _tabuleiroNovo);
-        }
+    if (linha - 2 >= 0 && coluna + 2 < 8  &&   
+      !_tabuleiro.procura_peca(linha - 2, coluna + 2, cor) &&
+      !_tabuleiro.procura_peca(linha - 2, coluna + 2, outraCor) &&
+      _tabuleiro.procura_peca(linha - 1, coluna + 1, outraCor)) { 
+        
+        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
+        tabuleiroNovo.capturaPeca(_peca, {linha - 1, coluna + 1}, -2, 2);
+        quantidadeDeJogadas++;
+
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if(contaJogadas(tabuleiroNovo, _peca)) return 1;    
     }
-    if (l + 2 <= s && c + 2 <= s) {
-        if(_tabuleiro[l + 1][c + 1] == 'p' && _tabuleiro[l + 2][c + 2] == 'o') {
-            char **_tabuleiroNovo = cria_Tabuleiro(s);
-            copia_Tabuleiro(s, _tabuleiro, _tabuleiroNovo);
-            _tabuleiroNovo[l + 1][c + 1] = 'o';
-            _tabuleiroNovo[l][c] = 'o';
-            _tabuleiroNovo[l + 2][c + 2] = 'b';
-            quantidadeDeJogadas++;
-            if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
-            if(contaJogadas(s, _tabuleiroNovo, l + 2, c + 2)) return 1;
-            libera_Tabuleiro(s, _tabuleiroNovo);
-        }
-    }
-    if (l - 2 >= 0 && c + 2 <= s) {
-        if(_tabuleiro[l - 1][c + 1] == 'p' && _tabuleiro[l - 2][c + 2] == 'o') {
-            char **_tabuleiroNovo = cria_Tabuleiro(s);
-            copia_Tabuleiro(s, _tabuleiro, _tabuleiroNovo);
-            _tabuleiroNovo[l - 1][c + 1] = 'o';
-            _tabuleiroNovo[l][c] = 'o';
-            _tabuleiroNovo[l - 2][c + 2] = 'b';
-            quantidadeDeJogadas++;
-            if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
-            if(contaJogadas(s, _tabuleiroNovo, l - 2, c + 2)) return 1;
-            libera_Tabuleiro(s, _tabuleiroNovo);
-        }
-    }
-    if (l + 2 <= s && c - 2 >= 0) {
-        if (_tabuleiro[l + 1][c - 1] == 'p' && _tabuleiro[l + 2][c - 2] == 'o') {
-            char **_tabuleiroNovo = cria_Tabuleiro(s);
-            copia_Tabuleiro(s, _tabuleiro, _tabuleiroNovo);
-            _tabuleiroNovo[l + 1][c - 1] = 'o';
-            _tabuleiroNovo[l][c] = 'o';
-            _tabuleiroNovo[l + 2][c - 2] = 'b';
-            quantidadeDeJogadas++;
-            if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
-            if(contaJogadas(s, _tabuleiroNovo, l + 2, c - 2)) return 1;
-            libera_Tabuleiro(s, _tabuleiroNovo);
-        }
-    }
+
     quantidadeDeJogadas--;
     return 0;    
 }
 
-void Engine::rodaEngine(_Tabuleiro_t __tabuleiro, char _cor) {
+void Engine::rodaEngine(Tabuleiro_t _tabuleiro, char _cor) {
     if (_cor == 'b') {
-        for (Peca_t peca : __tabuleiro.get__tabuleiro()) {
+        for (Peca_t peca : _tabuleiro.get_tabuleiro()) {
             if (peca.get_cor() == _cor) {
                 quantidadeDeJogadas = 0;
-                quantidadeDeJogadasMAX = 0;
-                this->contaJogadas(__tabuleiro, peca, _cor);
+                quantidadeDeJogadasMax = 0;
+                this->contaJogadas(_tabuleiro, peca);
             }            
         }
     }

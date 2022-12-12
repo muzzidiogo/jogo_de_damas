@@ -10,7 +10,7 @@ class Engine {
     private:
         int quantidadeDeJogadas, quantidadeDeJogadasMax;
     public:
-        bool contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca, char _cor);
+        bool contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca);
         void rodaEngine(Tabuleiro_t _tabuleiro, char _cor);
 };
 #endif
