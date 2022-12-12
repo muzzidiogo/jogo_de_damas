@@ -80,3 +80,15 @@ void Tabuleiro_t::capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int l
     pecaJogada.Andar({linha + linhasMover, coluna + colunasMover});
     this->RemoverPeca(posicaoRemover);
 }
+
+Peca_t Tabuleiro_t::retornaMaior() {
+    Peca_t maior; //foi necessário criar um construtor vazio pra fazer isso;
+    maior.set_quantidadeJogadas(-1);
+
+    for (Peca_t peca : _tabuleiro) {
+        if (peca.get_quantidadeJogadas() > maior.get_quantidadeJogadas()) {
+            maior = peca;
+        }
+    }
+    return maior;
+}

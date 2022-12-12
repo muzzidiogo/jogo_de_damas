@@ -68,16 +68,13 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
 }
 
 void Engine::rodaEngine(Tabuleiro_t _tabuleiro, char _cor) {
-    if (_cor == 'b') {
-        for (Peca_t peca : _tabuleiro.get_tabuleiro()) {
-            if (peca.get_cor() == _cor) {
-                quantidadeDeJogadas = 0;
-                quantidadeDeJogadasMax = 0;
-                this->contaJogadas(_tabuleiro, peca);
-            }            
+    for (int i = 0; i < _tabuleiro.get_tabuleiro().size(); i++) {
+        if (_tabuleiro.get_tabuleiro()[i].get_cor() == _cor) {
+            quantidadeDeJogadas = 0;
+            quantidadeDeJogadasMax = 0;
+            this->contaJogadas(_tabuleiro, _tabuleiro.get_tabuleiro()[i]);
+            _tabuleiro.get_tabuleiro()[i].set_quantidadeJogadas(quantidadeDeJogadasMax);
+            //O VALOR DE MAIOR QUANTIDADE DE JOGADAS É RETORNADO PELO TABULEIRO (é o que faz mais sentido)
         }
     }
 }
-
-
-

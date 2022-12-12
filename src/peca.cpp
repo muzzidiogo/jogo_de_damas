@@ -17,3 +17,10 @@ Posicao_t Peca_t::get_posicao() {
 int Peca_t::get_cor() {
     return _cor;
 }
+void Peca_t::set_quantidadeJogadas(int quantidade) {
+    quantidadeJogadas = quantidade;
+}
+
+int Peca_t::get_quantidadeJogadas() {
+    return quantidadeJogadas;
+}
