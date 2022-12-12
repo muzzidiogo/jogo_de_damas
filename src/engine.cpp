@@ -68,7 +68,7 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
 }
 
 void Engine::rodaEngine(Tabuleiro_t _tabuleiro, char _cor) {
-    for (int i = 0; i < _tabuleiro.get_tabuleiro().size(); i++) {
+    for (long unsigned int i = 0; i < _tabuleiro.get_tabuleiro().size(); i++) {
         if (_tabuleiro.get_tabuleiro()[i].get_cor() == _cor) {
             quantidadeDeJogadas = 0;
             quantidadeDeJogadasMax = 0;

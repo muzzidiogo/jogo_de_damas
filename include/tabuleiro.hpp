@@ -14,7 +14,7 @@ public:
     bool VerificarPosicao(Posicao_t posicao);
     bool AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca);
     std::vector<Peca_t> get_tabuleiro();
-    bool procura_peca(int linha, int coluna, char cor);
+    bool procura_peca(long unsigned int linha, long unsigned int coluna, char cor);
     void copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo);
     
     //esta funð§ð£o foi declarada aqui porque, para capturar, informað§ðµes do tabuleiro sð£o necessð¡rias
