@@ -4,6 +4,11 @@
 #include <vector>
 #include "peca.hpp"
 
+typedef struct {
+    int linha;
+    int coluna;
+} Movimento_t;
+
 class Tabuleiro_t {
 private:
     const static unsigned int TAMANHO;
@@ -16,8 +21,7 @@ public:
     std::vector<Peca_t> get_tabuleiro();
     bool procura_peca(Posicao_t posicao, char cor); 
     void copia_tabuleiro(Tabuleiro_t tabuleiroAntigo);
-    void captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover); 
-    
+    void captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, Movimento_t movimento);   
 };
 
 #endif //TABULEIRO_H

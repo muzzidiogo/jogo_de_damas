@@ -70,7 +70,7 @@ void Tabuleiro_t::copia_tabuleiro(Tabuleiro_t tabuleiroAntigo) {
     }
 }
 
-void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover) {
+void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, Movimento_t movimento) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     
@@ -79,6 +79,6 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, int 
         if (peca.get_posicao().linha == pecaJogada.get_posicao().linha &&
             peca.get_posicao().coluna == pecaJogada.get_posicao().coluna) pecaAndar = &peca;
     }
-    pecaAndar->andar({linha + linhasMover, coluna + colunasMover});
+    pecaAndar->andar({linha + movimento.linha, coluna + movimento.coluna});
     this->remover_peca(posicaoRemover);
 }

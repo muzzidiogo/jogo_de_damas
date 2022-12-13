@@ -13,7 +13,7 @@ bool Engine::conta_jogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificações necessárias para a contagem
         tabuleiroNovo.copia_tabuleiro(_tabuleiro);
-        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna - 1}, -2, -2); //será que a peça vai alterar sua posição???
+        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna - 1}, {-2, -2}); //será que a peça vai alterar sua posição???
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -26,7 +26,7 @@ bool Engine::conta_jogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
         tabuleiroNovo.copia_tabuleiro(_tabuleiro);
-        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna + 1}, 2, 2);
+        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna + 1}, {2, 2});
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -39,7 +39,7 @@ bool Engine::conta_jogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
         tabuleiroNovo.copia_tabuleiro(_tabuleiro);
-        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna - 1}, 2, -2);
+        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna - 1}, {2, -2});
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -52,7 +52,7 @@ bool Engine::conta_jogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
         tabuleiroNovo.copia_tabuleiro(_tabuleiro);
-        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna + 1}, -2, 2);
+        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna + 1}, {-2, 2});
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
