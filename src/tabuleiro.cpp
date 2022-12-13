@@ -5,14 +5,14 @@ Tabuleiro_t::Tabuleiro_t() {
     for(unsigned int i = 0; i<3; i++) {
         for(unsigned int j=0; j<8; j++) {
             if((i%2 != 0 && j%2 != 0) || ((i%2 == 0 && j%2 == 0))) {
-                _tabuleiro.push_back(Peca_t(false, Cores::PRETO, Posicao_t{i, j}));
+                _tabuleiro.push_back(Peca_t(Cores::PRETO, Posicao_t{i, j}));
             }
         }
     }
     for(unsigned int i = 5; i<8; i++) {
         for(unsigned int j=0; j<8; j++) {
             if((i%2 != 0 && j%2 != 0) || ((i%2 == 0 && j%2 == 0))) {
-                _tabuleiro.push_back(Peca_t(false, Cores::BRANCO, Posicao_t{i, j}));
+                _tabuleiro.push_back(Peca_t(Cores::BRANCO, Posicao_t{i, j}));
             }
         }
     }
@@ -40,9 +40,9 @@ bool Tabuleiro_t::verificar_posicao(Posicao_t posicao){
 }
 
 bool Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca){
-    if(procura_peca(novaPosicao, peca.get_cor())){
-        captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);
-    }
+    // if(procura_peca(novaPosicao, peca.get_cor())){
+    //     captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);
+    // }
     peca.andar(novaPosicao);
     return true;
 }
