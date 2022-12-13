@@ -82,3 +82,10 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, Movi
     pecaAndar->andar({linha + movimento.linha, coluna + movimento.coluna});
     this->remover_peca(posicaoRemover);
 }
+
+bool Tabuleiro_t::verifica_validade_movimento_casas(Posicao_t posicaoPeca, Movimento_t movimento, char cor) {
+    bool casaMoverEvalida = this->verificar_posicao({posicaoPeca.linha + 2*movimento.linha, posicaoPeca.coluna + 2*movimento.coluna});
+    bool casaComerEvalida = this->procura_peca({posicaoPeca.linha + movimento.linha, posicaoPeca.coluna + movimento.coluna}, cor);
+
+    return (casaMoverEvalida && casaComerEvalida); 
+}
