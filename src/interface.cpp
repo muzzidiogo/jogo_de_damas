@@ -217,7 +217,7 @@ void InterfaceGrafica::reiniciar() {
     _placarCapturas[Jogador::O] = 0;
 }
 
-void InterfaceGrafica::somarPlacarRodadas(int jogador, unsigned int valor) {
+void InterfaceGrafica::somar_placar_rodadas(int jogador, unsigned int valor) {
     switch (jogador)
     {
     case Jogador::X:
@@ -232,7 +232,7 @@ void InterfaceGrafica::somarPlacarRodadas(int jogador, unsigned int valor) {
         break;
     };
 }
-void InterfaceGrafica::somarPlacarCapturas(int jogador, unsigned int valor) {
+void InterfaceGrafica::somar_placar_capturas(int jogador, unsigned int valor) {
     switch (jogador) {
     case Jogador::X:
         _placarCapturas[Jogador::X] += valor;
@@ -247,7 +247,7 @@ void InterfaceGrafica::somarPlacarCapturas(int jogador, unsigned int valor) {
     }
 }
 
-WINDOW* InterfaceGrafica::get_Win() {
+WINDOW* InterfaceGrafica::get_win() {
     return _win;
 }
 

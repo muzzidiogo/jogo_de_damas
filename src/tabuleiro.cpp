@@ -18,7 +18,7 @@ Tabuleiro_t::Tabuleiro_t() {
     }
 }
 
-void Tabuleiro_t::RemoverPeca(Posicao_t posicao) { //fonte de bug???
+void Tabuleiro_t::remover_peca(Posicao_t posicao) { //fonte de bug???
     for(auto it = _tabuleiro.begin(); it != _tabuleiro.end(); it++) {
         if((it->get_posicao().coluna == posicao.coluna) &&
            (it->get_posicao().linha == posicao.linha))
@@ -28,7 +28,7 @@ void Tabuleiro_t::RemoverPeca(Posicao_t posicao) { //fonte de bug???
     }
 }
 
-bool Tabuleiro_t::VerificarPosicao(Posicao_t posicao){
+bool Tabuleiro_t::verificar_posicao(Posicao_t posicao){
     for(Peca_t peca : _tabuleiro) {
         if((peca.get_posicao().coluna == posicao.coluna) && 
            (peca.get_posicao().linha == posicao.linha)) 
@@ -39,15 +39,11 @@ bool Tabuleiro_t::VerificarPosicao(Posicao_t posicao){
     return false;
 }
 
-bool Tabuleiro_t::AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca){
-    if(VerificarPosicao(novaPosicao)){
-        RemoverPeca(novaPosicao); //Resolver: remove mesmo se for pe�a da mesma cor
-        Posicao_t posicaoDeCaptura;
-        posicaoDeCaptura.coluna = novaPosicao.coluna + 1;
-        posicaoDeCaptura.linha = novaPosicao.linha + 1;
-        return true; //Resolver: a posi��o ap�s captura deve ser na mesma dire��o em que a pe�a movimentou.
+bool Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca){
+    if(procura_peca(novaPosicao, peca.get_cor())){
+        captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);
     }
-    peca.Andar(novaPosicao);
+    peca.andar(novaPosicao);
     return true;
 }
 
@@ -83,6 +79,6 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, int 
         if (peca.get_posicao().linha == pecaJogada.get_posicao().linha &&
             peca.get_posicao().coluna == pecaJogada.get_posicao().coluna) pecaAndar = &peca;
     }
-    pecaAndar->Andar({linha + linhasMover, coluna + colunasMover});
-    this->RemoverPeca(posicaoRemover);
+    pecaAndar->andar({linha + linhasMover, coluna + colunasMover});
+    this->remover_peca(posicaoRemover);
 }

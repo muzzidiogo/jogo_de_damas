@@ -50,12 +50,12 @@ class InterfaceGrafica {
         /// @brief Essa função adiciona ao placar do jogador X
         /// @param jogador Jogador que estará tendo seu placar somado
         /// @param valor Um unsigned int equivalente ao valor que será somado
-        void somarPlacarRodadas(int jogador,unsigned int valor);
+        void somar_placar_rodadas(int jogador,unsigned int valor);
 
         /// @brief Essa função adiciona ao placar do jogador X
         /// @param jogador Jogador que estará tendo seu placar somado
         /// @param valor Um unsigned int equivalente ao valor que será somado
-        void somarPlacarCapturas(int jogador, unsigned int valor);
+        void somar_placar_capturas(int jogador, unsigned int valor);
 
         /// @brief Essa função realça o comando do menu escolhido 
         /// @param opcao A opção que está sendo escolhida
@@ -70,7 +70,7 @@ class InterfaceGrafica {
 
         /// @brief Retorna o ponteiro da janela produzida 
         /// @return
-        WINDOW* get_Win();
+        WINDOW* get_win();
 
         ~InterfaceGrafica();
 };

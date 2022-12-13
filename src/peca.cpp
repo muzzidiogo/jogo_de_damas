@@ -6,7 +6,7 @@ Peca_t::Peca_t(bool dama, int cor, Posicao_t posicao){
     _posicao = posicao;
 }
 
-void Peca_t::Andar(Posicao_t novaPosicao){
+void Peca_t::andar(Posicao_t novaPosicao){
     _posicao = novaPosicao;
 }
 
