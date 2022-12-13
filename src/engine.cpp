@@ -9,11 +9,11 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
 
     if (linha - 2 >= 0 && coluna - 2 >= 0 &&  //se a jogada puder ser feita
       !_tabuleiro.VerificarPosicao({linha - 2, coluna - 2}) && //e houver espaço para a captura 
-      _tabuleiro.procura_peca(linha - 1, coluna - 1, outraCor)) { //e uma peça inimiga estiver na diagonal
+      _tabuleiro.procura_peca({linha - 1, coluna - 1}, outraCor)) { //e uma peça inimiga estiver na diagonal
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificações necessárias para a contagem
-        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
-        tabuleiroNovo.capturaPeca(_peca, {linha - 1, coluna - 1}, -2, -2); //será que a peça vai alterar sua posição???
+        tabuleiroNovo.copia_tabuleiro(_tabuleiro);
+        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna - 1}, -2, -2); //será que a peça vai alterar sua posição???
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -22,11 +22,11 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
 
     if (linha + 2 < 8 && coluna + 2 < 8 && //0 a 7, 8 pecas. 8 é o max + 1  
       !_tabuleiro.VerificarPosicao({linha + 2, coluna + 2}) &&
-      _tabuleiro.procura_peca(linha + 1, coluna + 1, outraCor)) { 
+      _tabuleiro.procura_peca({linha + 1, coluna + 1}, outraCor)) { 
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
-        tabuleiroNovo.capturaPeca(_peca, {linha + 1, coluna + 1}, 2, 2);
+        tabuleiroNovo.copia_tabuleiro(_tabuleiro);
+        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna + 1}, 2, 2);
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -35,11 +35,11 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
 
     if (linha + 2 < 8 && coluna - 2 >= 0  &&   
       !_tabuleiro.VerificarPosicao({linha + 2, coluna - 2}) &&
-      _tabuleiro.procura_peca(linha + 1, coluna - 1, outraCor)) { 
+      _tabuleiro.procura_peca({linha + 1, coluna - 1}, outraCor)) { 
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
-        tabuleiroNovo.capturaPeca(_peca, {linha + 1, coluna - 1}, 2, -2);
+        tabuleiroNovo.copia_tabuleiro(_tabuleiro);
+        tabuleiroNovo.captura_peca(_peca, {linha + 1, coluna - 1}, 2, -2);
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -48,11 +48,11 @@ bool Engine::contaJogadas(Tabuleiro_t _tabuleiro, Peca_t _peca) {
     
     if (linha - 2 >= 0 && coluna + 2 < 8  &&   
       !_tabuleiro.VerificarPosicao({linha - 2, coluna + 2}) &&
-      _tabuleiro.procura_peca(linha - 1, coluna + 1, outraCor)) { 
+      _tabuleiro.procura_peca({linha - 1, coluna + 1}, outraCor)) { 
         
         Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copiaTabuleiroDe(_tabuleiro);
-        tabuleiroNovo.capturaPeca(_peca, {linha - 1, coluna + 1}, -2, 2);
+        tabuleiroNovo.copia_tabuleiro(_tabuleiro);
+        tabuleiroNovo.captura_peca(_peca, {linha - 1, coluna + 1}, -2, 2);
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;

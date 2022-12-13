@@ -55,10 +55,10 @@ std::vector<Peca_t> Tabuleiro_t::get_tabuleiro(){
     return _tabuleiro;
 }
 
-bool Tabuleiro_t::procura_peca(long unsigned int linha, long unsigned int coluna, char cor) {
+bool Tabuleiro_t::procura_peca(Posicao_t posicao, char cor) {
     for (Peca_t peca : _tabuleiro) {
-        if (peca.get_posicao().linha == linha && 
-           peca.get_posicao().coluna == coluna && 
+        if (peca.get_posicao().linha == posicao.linha && 
+           peca.get_posicao().coluna == posicao.coluna && 
            peca.get_cor() == cor) {
             return true;    
         } 
@@ -66,7 +66,7 @@ bool Tabuleiro_t::procura_peca(long unsigned int linha, long unsigned int coluna
     return false;
 }
 
-void Tabuleiro_t::copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo) {
+void Tabuleiro_t::copia_tabuleiro(Tabuleiro_t tabuleiroAntigo) {
     _tabuleiro.clear();
 
     for (Peca_t peca : tabuleiroAntigo.get_tabuleiro()) {
@@ -74,7 +74,7 @@ void Tabuleiro_t::copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo) {
     }
 }
 
-void Tabuleiro_t::capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover) {
+void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     
