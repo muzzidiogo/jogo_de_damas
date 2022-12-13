@@ -11,15 +11,15 @@ private:
 public:
     Tabuleiro_t();
     void RemoverPeca(Posicao_t posicao);
-    bool VerificarPosicao(Posicao_t posicao);
+    bool VerificarPosicao(Posicao_t posicao); //trocar todos os verificarposicao por procura peca
     bool AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca);
     std::vector<Peca_t> get_tabuleiro();
-    bool procura_peca(long unsigned int linha, long unsigned int coluna, char cor);
+    bool procura_peca(long unsigned int linha, long unsigned int coluna, char cor); //trocar variaveis por structs
     void copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo);
     
-    //esta funð§ð£o foi declarada aqui porque, para capturar, informað§ðµes do tabuleiro sð£o necessð¡rias
-    void capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover); //apaga a peð§a 'pecaCapturar', movimenta a peca 'pecaJogada' 
-    
+    //esta funï¿½ï¿½o foi declarada aqui porque, para capturar, informaï¿½ï¿½es do tabuleiro sï¿½o necessï¿½rias
+    void capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover); //apaga a peï¿½a 'pecaCapturar', movimenta a peca 'pecaJogada' 
+    //trocar linhas e colunasmover por struct
 };
 
 #endif //TABULEIRO_H

@@ -41,11 +41,11 @@ bool Tabuleiro_t::VerificarPosicao(Posicao_t posicao){
 
 bool Tabuleiro_t::AtualizarTabuleiro(Posicao_t novaPosicao, Peca_t peca){
     if(VerificarPosicao(novaPosicao)){
-        RemoverPeca(novaPosicao); //Resolver: remove mesmo se for peð§a da mesma cor
+        RemoverPeca(novaPosicao); //Resolver: remove mesmo se for peï¿½a da mesma cor
         Posicao_t posicaoDeCaptura;
         posicaoDeCaptura.coluna = novaPosicao.coluna + 1;
         posicaoDeCaptura.linha = novaPosicao.linha + 1;
-        return true; //Resolver: a posið§ð£o apð³s captura deve ser na mesma direð§ð£o em que a peð§a movimentou.
+        return true; //Resolver: a posiï¿½ï¿½o apï¿½s captura deve ser na mesma direï¿½ï¿½o em que a peï¿½a movimentou.
     }
     peca.Andar(novaPosicao);
     return true;
@@ -77,6 +77,12 @@ void Tabuleiro_t::copiaTabuleiroDe(Tabuleiro_t tabuleiroAntigo) {
 void Tabuleiro_t::capturaPeca(Peca_t pecaJogada, Posicao_t posicaoRemover, int linhasMover, int colunasMover) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
-    pecaJogada.Andar({linha + linhasMover, coluna + colunasMover});
+    
+    Peca_t *pecaAndar;
+    for (Peca_t peca : _tabuleiro) {
+        if (peca.get_posicao().linha == pecaJogada.get_posicao().linha &&
+            peca.get_posicao().coluna == pecaJogada.get_posicao().coluna) pecaAndar = &peca;
+    }
+    pecaAndar->Andar({linha + linhasMover, coluna + colunasMover});
     this->RemoverPeca(posicaoRemover);
 }
