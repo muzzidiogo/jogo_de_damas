@@ -9,7 +9,7 @@ TEST_CASE("Teste de declaração dos resultados") {
     char cor = 'b';
     Engine engine;
 
-    engine.rodaEngine(tabuleiro, cor);
+    engine.roda_engine(tabuleiro, cor);
 
 
 }
