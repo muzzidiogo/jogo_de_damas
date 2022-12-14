@@ -26,3 +26,10 @@ int Peca_t::get_quantidadeJogadas() {
 std::vector<Peca_t> Peca_t::get_pecasRemover() {
     return _pecasRemover;
 }
+
+void Peca_t::set_pecasRemover(std::vector<Peca_t> pecasRemover) {
+    _pecasRemover.clear();
+    for (Peca_t peca : pecasRemover) { //implementado dessa forma por causa de possíveis problemas de escopo, testar
+        _pecasRemover.push_back(peca); 
+    }
+}

@@ -1,6 +1,6 @@
 #ifndef PECA_HPP
 #define PECA_HPP
-
+#include <vector>
 //================ EXTRAS ================
 typedef struct {
     unsigned int linha;
@@ -27,6 +27,7 @@ public:
     void set_quantidadeJogadas(int quantidade);
     int get_quantidadeJogadas();
     std::vector<Peca_t> get_pecasRemover();
+    void set_pecasRemover(std::vector<Peca_t> pecasRemover);
 };
 
 #endif //PECA_HPP

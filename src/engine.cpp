@@ -4,8 +4,8 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
     unsigned int linha = peca.get_posicao().linha;
     unsigned int coluna = peca.get_posicao().coluna;
     char cor = peca.get_cor();
-    char outraCor = 'b';
-    if (cor == 'b') outraCor = 'p';
+    char outraCor = Cores::PRETO;
+    if (cor == Cores::PRETO) outraCor = Cores::BRANCO;
 
     if (linha - 2 >= 0 && coluna - 2 >= 0 &&
       tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {-1, -1}, outraCor)) { 
@@ -58,10 +58,11 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
   for (unsigned int i = 0; i < tabuleiro.get_tabuleiro().size(); i++) {
     if (tabuleiro.get_tabuleiro()[i].get_cor() == cor) {
-      quantidadeDeJogadas = 0;
-      quantidadeDeJogadasMax = 0;
+      quantidadeDeJogadas = 0; quantidadeDeJogadasMax = 0;
+      pecasRemover.clear(); pecasRemoverMax.clear();
       this->conta_jogadas(tabuleiro, tabuleiro.get_tabuleiro()[i]);
       tabuleiro.get_tabuleiro()[i].set_quantidadeJogadas(quantidadeDeJogadasMax);
+      tabuleiro.get_tabuleiro()[i].set_pecasRemover(pecasRemoverMax);
     }
   }
 }
