@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
 
     // GERAR JANELA ======================
     InterfaceGrafica interface = InterfaceGrafica(&tabuleiro, LINHAS, COLUNAS);
-    WINDOW* win = interface.get_Win();
+    WINDOW* win = interface.get_win();
     //====================================
 
     // VARIÁVEIS PARA O MENU
