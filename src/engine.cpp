@@ -67,7 +67,7 @@ void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
 }
 
 Peca_t Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
-  Peca_t maior;
+  Peca_t maior = Peca_t(Cores::PRETO, {1, 1}); //definicao de peca inicial para comparacoes
   maior.set_quantidadeJogadas(-1);
 
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {
