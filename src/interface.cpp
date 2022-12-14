@@ -39,6 +39,8 @@ void InterfaceGrafica::desenhar_main() {
     // Gerar o Tabuleiro Vazio
     for(int linha = inicio; linha<inicio+8; linha++) {
         for(int coluna = inicio; coluna<inicio+8; coluna++) {
+            mvwprintw(_win, inicio-1, coluna+(3*(coluna)), "_%i_", int(coluna-inicio));
+            mvwprintw(_win, linha, inicio+(2*(inicio)), "_%i_|", int(linha-inicio));
             if((linha%2 != 0 && coluna%2 != 0) || ((linha%2 == 0 && coluna%2 == 0))) {
                 wattron(_win, A_STANDOUT);
                 mvwprintw(_win, linha, coluna+(3*(coluna)), "___");
