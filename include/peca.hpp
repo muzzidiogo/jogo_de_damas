@@ -17,6 +17,7 @@ private:
     int _cor;
     Posicao_t _posicao;
     int _quantidadeJogadas = 0;
+    std::vector<Peca_t> _pecasRemover;
 public:
     Peca_t(); //construtor vazio 
     Peca_t(int cor, Posicao_t posicao);
@@ -25,6 +26,7 @@ public:
     int get_cor();
     void set_quantidadeJogadas(int quantidade);
     int get_quantidadeJogadas();
+    std::vector<Peca_t> get_pecasRemover();
 };
 
 #endif //PECA_HPP

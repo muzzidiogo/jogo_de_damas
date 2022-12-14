@@ -22,3 +22,7 @@ void Peca_t::set_quantidadeJogadas(int quantidade) {
 int Peca_t::get_quantidadeJogadas() {
     return _quantidadeJogadas;
 }
+
+std::vector<Peca_t> Peca_t::get_pecasRemover() {
+    return _pecasRemover;
+}
