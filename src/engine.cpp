@@ -14,7 +14,10 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
         tabuleiroNovo.captura_peca(peca, {linha - 1, coluna - 1}, {-2, -2}); //serð¡ que a peð§a vai alterar sua posið§ð£o???
         quantidadeDeJogadas++;
 
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+          quantidadeDeJogadasMax = quantidadeDeJogadas;
+          pecasRemoverMax = pecasRemover;
+        }
         if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
     }
 
@@ -25,7 +28,10 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
         tabuleiroNovo.captura_peca(peca, {linha + 1, coluna + 1}, {2, 2});
         quantidadeDeJogadas++;
 
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+          quantidadeDeJogadasMax = quantidadeDeJogadas;
+          pecasRemoverMax = pecasRemover;
+        }
         if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
     }
 
@@ -36,7 +42,10 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
         tabuleiroNovo.captura_peca(peca, {linha + 1, coluna - 1}, {2, -2});
         quantidadeDeJogadas++;
 
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+          quantidadeDeJogadasMax = quantidadeDeJogadas;
+          pecasRemoverMax = pecasRemover;
+        }
         if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
     }
     
@@ -46,8 +55,11 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
         tabuleiroNovo.copia_tabuleiro(tabuleiro);
         tabuleiroNovo.captura_peca(peca, {linha - 1, coluna + 1}, {-2, 2});
         quantidadeDeJogadas++;
-
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
+        
+        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+          quantidadeDeJogadasMax = quantidadeDeJogadas;
+          pecasRemoverMax = pecasRemover;
+        }
         if(conta_jogadas(tabuleiroNovo, peca)) return 1;            
     }
 
@@ -70,13 +82,9 @@ void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
 Peca_t Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
   Peca_t maior = Peca_t(Cores::PRETO, {1, 1}); //definicao de peca inicial para comparacoes
   maior.set_quantidadeJogadas(-1);
-
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {
     if (peca.get_cor() == cor && 
-      peca.get_quantidadeJogadas() > maior.get_quantidadeJogadas()) {
-      
-      maior = peca;
-    } 
+      peca.get_quantidadeJogadas() > maior.get_quantidadeJogadas()) maior = peca; 
   }
   
   return maior;
