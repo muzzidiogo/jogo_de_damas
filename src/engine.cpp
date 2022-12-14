@@ -9,9 +9,9 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 
     if (linha - 2 >= 0 && coluna - 2 >= 0 &&
       tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {-1, -1}, outraCor)) { 
-        Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificaÃ§Ãµes necessÃ¡rias para a contagem
+        Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificað§ðµes necessð¡rias para a contagem
         tabuleiroNovo.copia_tabuleiro(tabuleiro);
-        tabuleiroNovo.captura_peca(peca, {linha - 1, coluna - 1}, {-2, -2}); //serÃ¡ que a peÃ§a vai alterar sua posiÃ§Ã£o???
+        tabuleiroNovo.captura_peca(peca, {linha - 1, coluna - 1}, {-2, -2}); //serð¡ que a peð§a vai alterar sua posið§ð£o???
         quantidadeDeJogadas++;
 
         if (quantidadeDeJogadas > quantidadeDeJogadasMax) quantidadeDeJogadasMax = quantidadeDeJogadas;
@@ -66,3 +66,17 @@ void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
   }
 }
 
+Peca_t Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
+  Peca_t maior;
+  maior.set_quantidadeJogadas(-1);
+
+  for (Peca_t peca : tabuleiro.get_tabuleiro()) {
+    if (peca.get_cor() == cor && 
+      peca.get_quantidadeJogadas() > maior.get_quantidadeJogadas()) {
+      
+      maior = peca;
+    } 
+  }
+  
+  return maior;
+}
