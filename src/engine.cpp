@@ -14,7 +14,6 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
     
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha - 1, peca.get_posicao().coluna - 1});
-    
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -31,7 +30,6 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
     
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha + 1, peca.get_posicao().coluna + 1});
-    
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -48,7 +46,6 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha + 1, peca.get_posicao().coluna - 1});
-    
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -65,7 +62,6 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
     
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha - 1, peca.get_posicao().coluna + 1});
-    
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -82,13 +78,22 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
   return 0;    
 }
 
-Peca_t Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
+PecaPorCapturas_t *Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
+  PecaPorCapturas_t *maiorPeca = new PecaPorCapturas_t();
+
+  int maiorQuantidade = -1;
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {
     if (peca.get_cor() == cor) {
       _numCapturas = 0; _numCapturasMax = 0;
       _posRemover.clear(); _posRemoverMax.clear();
       this->conta_jogadas(tabuleiro, peca);
-      
+
+      if (_numCapturasMax > maiorQuantidade) {
+        maiorPeca->peca = peca;
+        maiorPeca->posRemover->clear();
+        for (Posicao_t posicao : _posRemoverMax) maiorPeca->posRemover->push_back(posicao);
+      }
     }
   }
+  return maiorPeca;
 }

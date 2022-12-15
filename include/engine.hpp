@@ -5,6 +5,11 @@
 #include "tabuleiro.hpp"
 #include <vector>
 
+typedef struct {
+    Peca_t peca;
+    std::vector<Posicao_t> * posRemover;
+} PecaPorCapturas_t;
+
 class Engine {
     private:
         int _numCapturas; 
@@ -15,7 +20,7 @@ class Engine {
         void roda_engine(Tabuleiro_t tabuleiro, char cor);
         Tabuleiro_t * aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca);
     public:
-        Dados_pecas_t get_maior(Tabuleiro_t tabuleiro, char cor);
+        PecaPorCapturas_t * get_maior(Tabuleiro_t tabuleiro, char cor);
 };
 
 #endif
