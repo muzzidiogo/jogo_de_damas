@@ -1,70 +1,67 @@
 #include "../include/engine.hpp"
 
+Tabuleiro_t * Engine::aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca) {
+  Tabuleiro_t *tabuleiroNovo = new Tabuleiro_t(); 
+  tabuleiroNovo->copia_tabuleiro(tabuleiro);
+  tabuleiroNovo->captura_peca(peca, movimento);
+
+  return tabuleiroNovo;
+}
+
 bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
-    unsigned int linha = peca.get_posicao().linha;
-    unsigned int coluna = peca.get_posicao().coluna;
-    char cor = peca.get_cor();
-    char outraCor = Cores::PRETO;
-    if (cor == Cores::PRETO) outraCor = Cores::BRANCO;
+  if (tabuleiro.verifica_validade_captura(peca, {-1, -1})) { 
+    Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {-1, -1}, peca);
+    _numCapturas++; 
 
-    if (linha - 2 >= 0 && coluna - 2 >= 0 &&
-      tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {-1, -1}, outraCor)) { 
-        Tabuleiro_t tabuleiroNovo = Tabuleiro_t(); //cria um tabuleiro novo para fazer as modificað§ðµes necessð¡rias para a contagem
-        tabuleiroNovo.copia_tabuleiro(tabuleiro);
-        tabuleiroNovo.captura_peca(peca, {linha - 1, coluna - 1}, {-2, -2}); //serð¡ que a peð§a vai alterar sua posið§ð£o???
-        quantidadeDeJogadas++;
-
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
-          quantidadeDeJogadasMax = quantidadeDeJogadas;
-          pecasRemoverMax = pecasRemover;
-        }
-        if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
+    if (_numCapturas > quantidadeDeJogadasMax) {
+      quantidadeDeJogadasMax = _numCapturas;
+      pecasRemoverMax = pecasRemover;
     }
+    if(conta_jogadas(*tabuleiroNovo, peca)) return 1;
+    delete tabuleiroNovo;    
+  }
 
-    if (linha + 2 < 8 && coluna + 2 < 8 && 
-      tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {1, 1}, outraCor)) { 
-        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copia_tabuleiro(tabuleiro);
-        tabuleiroNovo.captura_peca(peca, {linha + 1, coluna + 1}, {2, 2});
-        quantidadeDeJogadas++;
+  if (tabuleiro.verifica_validade_captura(peca, {1, 1})) { 
+      Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+      tabuleiroNovo.copia_tabuleiro(tabuleiro);
+      tabuleiroNovo.captura_peca(peca, {linha + 1, coluna + 1}, {2, 2});
+      quantidadeDeJogadas++;
 
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
-          quantidadeDeJogadasMax = quantidadeDeJogadas;
-          pecasRemoverMax = pecasRemover;
-        }
-        if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
-    }
+      if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+        quantidadeDeJogadasMax = quantidadeDeJogadas;
+        pecasRemoverMax = pecasRemover;
+      }
+      if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
+  }
 
-    if (linha + 2 < 8 && coluna - 2 >= 0  &&   
-      tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {1, -1}, outraCor)){ 
-        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copia_tabuleiro(tabuleiro);
-        tabuleiroNovo.captura_peca(peca, {linha + 1, coluna - 1}, {2, -2});
-        quantidadeDeJogadas++;
+  if (tabuleiro.verifica_validade_captura(peca, {1, -1})){ 
+      Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+      tabuleiroNovo.copia_tabuleiro(tabuleiro);
+      tabuleiroNovo.captura_peca(peca, {linha + 1, coluna - 1}, {2, -2});
+      quantidadeDeJogadas++;
 
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
-          quantidadeDeJogadasMax = quantidadeDeJogadas;
-          pecasRemoverMax = pecasRemover;
-        }
-        if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
-    }
-    
-    if (linha - 2 >= 0 && coluna + 2 < 8  &&
-      tabuleiro.verifica_validade_movimento_casas(peca.get_posicao(), {-1, 1}, outraCor)) { 
-        Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
-        tabuleiroNovo.copia_tabuleiro(tabuleiro);
-        tabuleiroNovo.captura_peca(peca, {linha - 1, coluna + 1}, {-2, 2});
-        quantidadeDeJogadas++;
-        
-        if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
-          quantidadeDeJogadasMax = quantidadeDeJogadas;
-          pecasRemoverMax = pecasRemover;
-        }
-        if(conta_jogadas(tabuleiroNovo, peca)) return 1;            
-    }
+      if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+        quantidadeDeJogadasMax = quantidadeDeJogadas;
+        pecasRemoverMax = pecasRemover;
+      }
+      if(conta_jogadas(tabuleiroNovo, peca)) return 1;    
+  }
+  
+  if (tabuleiro.verifica_validade_captura(peca, {-1, 1})) { 
+      Tabuleiro_t tabuleiroNovo = Tabuleiro_t();
+      tabuleiroNovo.copia_tabuleiro(tabuleiro);
+      tabuleiroNovo.captura_peca(peca, {linha - 1, coluna + 1}, {-2, 2});
+      quantidadeDeJogadas++;
+      
+      if (quantidadeDeJogadas > quantidadeDeJogadasMax) {
+        quantidadeDeJogadasMax = quantidadeDeJogadas;
+        pecasRemoverMax = pecasRemover;
+      }
+      if(conta_jogadas(tabuleiroNovo, peca)) return 1;            
+  }
 
-    quantidadeDeJogadas--;
-    return 0;    
+  quantidadeDeJogadas--;
+  return 0;    
 }
 
 void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
@@ -80,6 +77,8 @@ void Engine::roda_engine(Tabuleiro_t tabuleiro, char cor) {
 }
 
 Peca_t Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
+  this->roda_engine(tabuleiro, cor);
+
   Peca_t maior = Peca_t(Cores::PRETO, {1, 1}); //definicao de peca inicial para comparacoes
   maior.set_quantidadeJogadas(-1);
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {

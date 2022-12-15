@@ -19,10 +19,9 @@ public:
     bool verificar_posicao(Posicao_t posicao); 
     bool atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca);
     std::vector<Peca_t> get_tabuleiro();
-    bool procura_peca(Posicao_t posicao, char cor); 
     void copia_tabuleiro(Tabuleiro_t tabuleiroAntigo);
-    void captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, Movimento_t movimento);  
-    bool verifica_validade_movimento_casas(Posicao_t posicaoPeca, Movimento_t movimento, char cor); 
+    void captura_peca(Peca_t pecaJogada, Movimento_t movimento);  
+    bool verifica_validade_captura(Peca_t peca, Movimento_t movimento); 
 };
 
 #endif //TABULEIRO_H

@@ -51,17 +51,6 @@ std::vector<Peca_t> Tabuleiro_t::get_tabuleiro(){
     return _tabuleiro;
 }
 
-bool Tabuleiro_t::procura_peca(Posicao_t posicao, char cor) {
-    for (Peca_t peca : _tabuleiro) {
-        if (peca.get_posicao().linha == posicao.linha && 
-           peca.get_posicao().coluna == posicao.coluna && 
-           peca.get_cor() == cor) {
-            return true;    
-        } 
-    }
-    return false;
-}
-
 void Tabuleiro_t::copia_tabuleiro(Tabuleiro_t tabuleiroAntigo) {
     _tabuleiro.clear();
 
@@ -70,22 +59,42 @@ void Tabuleiro_t::copia_tabuleiro(Tabuleiro_t tabuleiroAntigo) {
     }
 }
 
-void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Posicao_t posicaoRemover, Movimento_t movimento) {
+void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Movimento_t movimento) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     
     Peca_t *pecaAndar;
     for (Peca_t peca : _tabuleiro) {
-        if (peca.get_posicao().linha == pecaJogada.get_posicao().linha &&
-            peca.get_posicao().coluna == pecaJogada.get_posicao().coluna) pecaAndar = &peca;
+        if (peca.get_posicao().linha == linha && peca.get_posicao().coluna == coluna) 
+            pecaAndar = &peca;
     }
-    pecaAndar->andar({linha + movimento.linha, coluna + movimento.coluna});
-    this->remover_peca(posicaoRemover);
+
+    pecaAndar->andar({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
+    this->remover_peca({linha + movimento.linha, coluna + movimento.coluna});
 }
 
-bool Tabuleiro_t::verifica_validade_movimento_casas(Posicao_t posicaoPeca, Movimento_t movimento, char cor) {
-    bool casaMoverEvalida = this->verificar_posicao({posicaoPeca.linha + 2*movimento.linha, posicaoPeca.coluna + 2*movimento.coluna});
-    bool casaComerEvalida = this->procura_peca({posicaoPeca.linha + movimento.linha, posicaoPeca.coluna + movimento.coluna}, cor);
+bool Tabuleiro_t::verifica_validade_captura(Peca_t pecaMover, Movimento_t movimento) {
+    unsigned int linha = pecaMover.get_posicao().linha;
+    unsigned int coluna = pecaMover.get_posicao().coluna;
+    char cor = pecaMover.get_cor();
+    char outraCor = Cores::PRETO;
+    if (cor == Cores::PRETO) outraCor = Cores::BRANCO;
 
-    return (casaMoverEvalida && casaComerEvalida); 
+    bool movimentoEvalido =  (linha + 2*movimento.linha >= 0) && 
+        (linha + 2*movimento.linha < 8) &&
+        (coluna + 2*movimento.coluna >= 0) && 
+        (coluna + 2*movimento.coluna < 8);  
+                                
+    bool casaCapturarEvalida = false; //loop dentro da funcao porque é mecessário verificar a cor
+    for (Peca_t peca : _tabuleiro) {
+        if (peca.get_posicao().linha ==  linha + movimento.linha && 
+           peca.get_posicao().coluna ==  coluna + movimento.coluna && 
+           peca.get_cor() == outraCor) {
+            casaCapturarEvalida = true;    
+        } 
+    }
+
+    bool casaMoverOcupada = this->verificar_posicao({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
+
+    return (movimentoEvalido && casaCapturarEvalida && !casaMoverOcupada); 
 }
