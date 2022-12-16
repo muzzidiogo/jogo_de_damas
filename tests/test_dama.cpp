@@ -1,4 +1,4 @@
-#include "../third_party/doctest.h"
+/* #include "../third_party/doctest.h"
 #include "../include/dama.hpp"
 
 TEST_CASE("Construtor Dama"){
@@ -12,4 +12,4 @@ TEST_CASE("Construtor Dama"){
     CHECK_EQ(pos.coluna, d.get_posicao().coluna);
     CHECK_EQ(0, d.get_cor());
     CHECK_EQ(0, d.get_quantidadeJogadas());
-}
+} */

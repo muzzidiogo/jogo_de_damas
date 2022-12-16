@@ -1,5 +1,8 @@
 #include "../include/peca.hpp"
 
+Peca_t::Peca_t() {
+}
+
 Peca_t::Peca_t(int cor, Posicao_t posicao)
 :_cor(cor), _posicao(posicao){}
 

@@ -79,7 +79,7 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 }
 
 PecaPorCapturas_t *Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
-  PecaPorCapturas_t *maiorPeca = new PecaPorCapturas_t();
+  PecaPorCapturas_t *maiorPeca = (new PecaPorCapturas_t);
 
   int maiorQuantidade = -1;
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {

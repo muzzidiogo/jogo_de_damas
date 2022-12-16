@@ -1,4 +1,4 @@
-#include "../third_party/doctest.h"
+/* #include "../third_party/doctest.h"
 #include "../include/peca.hpp"
 
 TEST_CASE("Construtor e set_quantidadeJogadas Peça"){
@@ -12,4 +12,4 @@ TEST_CASE("Construtor e set_quantidadeJogadas Peça"){
     CHECK_EQ(pos.coluna, p.get_posicao().coluna);
     CHECK_EQ(0, p.get_cor());
     CHECK_EQ(0, p.get_quantidadeJogadas());
-}
+} */
