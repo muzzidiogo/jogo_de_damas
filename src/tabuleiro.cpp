@@ -39,6 +39,13 @@ bool Tabuleiro_t::verificar_posicao(Posicao_t posicao){
     return false;
 }
 
+bool Tabuleiro_t::verificar_pos_saiu_tabuleiro(Posicao_t posicao) {
+    if(posicao.coluna<0||posicao.coluna>7||posicao.linha<0||posicao.linha>7){
+        return true;
+    }
+    return false;
+}
+
 bool Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca){
     // if(procura_peca(novaPosicao, peca.get_cor())){
     //     captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);

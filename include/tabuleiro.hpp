@@ -16,7 +16,8 @@ private:
 public:
     Tabuleiro_t();
     void remover_peca(Posicao_t posicao);
-    bool verificar_posicao(Posicao_t posicao); 
+    bool verificar_posicao(Posicao_t posicao);
+    bool verificar_pos_saiu_tabuleiro(Posicao_t posicao);
     bool atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca);
     std::vector<Peca_t> get_tabuleiro();
     void copia_tabuleiro(Tabuleiro_t tabuleiroAntigo);
