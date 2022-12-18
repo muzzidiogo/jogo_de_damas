@@ -27,6 +27,9 @@ class InterfaceGrafica {
         Tabuleiro_t* _tabuleiro;
         std::array<std::string,3> _memJogadas = {"","",""};
 
+        /// @brief Essa função adiciona a quantidade de capturas
+        void somar_placar_capturas();
+
     public:
         /// @brief Construtor
         /// @param tabuleiro ponteiro para o tabuleiro do jogo 
@@ -51,11 +54,6 @@ class InterfaceGrafica {
         /// @param jogador Jogador que estará tendo seu placar somado
         /// @param valor Um unsigned int equivalente ao valor que será somado
         void somar_placar_rodadas(int jogador,unsigned int valor);
-
-        /// @brief Essa função adiciona ao placar do jogador X
-        /// @param jogador Jogador que estará tendo seu placar somado
-        /// @param valor Um unsigned int equivalente ao valor que será somado
-        void somar_placar_capturas(int jogador, unsigned int valor);
 
         /// @brief Essa função realça o comando do menu escolhido 
         /// @param opcao A opção que está sendo escolhida

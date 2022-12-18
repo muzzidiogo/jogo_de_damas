@@ -77,6 +77,8 @@ void InterfaceGrafica::desenhar_main() {
         mvwprintw(_win, i++, (_colunas-20),"%s", jogada.c_str());
     }
 
+    somar_placar_capturas();
+
     wattron(_win, A_UNDERLINE);
     mvwprintw(_win, 7, (_colunas-25), "Capturas:");
     wattroff(_win, A_UNDERLINE);
@@ -234,19 +236,15 @@ void InterfaceGrafica::somar_placar_rodadas(int jogador, unsigned int valor) {
         break;
     };
 }
-void InterfaceGrafica::somar_placar_capturas(int jogador, unsigned int valor) {
-    switch (jogador) {
-    case Jogador::X:
-        _placarCapturas[Jogador::X] += valor;
-        break;
-    
-    case Jogador::O:
-        _placarCapturas[Jogador::O] += valor;
-        break;
-        
-    default:
-        break;
+void InterfaceGrafica::somar_placar_capturas() {
+    int preto=0;
+    int branco=0;
+    for(Peca_t peca : _tabuleiro->get_tabuleiro()) {
+        if(peca.get_cor() == Cores::BRANCO) branco++;
+        else preto++;
     }
+    _placarCapturas[Jogador::X] = abs(12-branco);
+    _placarCapturas[Jogador::O] = abs(12-preto);
 }
 
 WINDOW* InterfaceGrafica::get_win() {
