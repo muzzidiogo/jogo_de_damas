@@ -22,7 +22,9 @@ public:
     std::vector<Peca_t> get_tabuleiro();
     void copia_tabuleiro(Tabuleiro_t tabuleiroAntigo);
     void captura_peca(Peca_t pecaJogada, Movimento_t movimento);  
-    bool verifica_validade_captura(Peca_t peca, Movimento_t movimento); 
+    bool verifica_validade_captura(Peca_t peca, Movimento_t movimento);
+    
+    void set_tabuleiro_testes(std::vector<Peca_t> tabuleiro); 
 };
 
 #endif //TABULEIRO_H

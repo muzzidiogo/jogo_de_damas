@@ -105,3 +105,7 @@ bool Tabuleiro_t::verifica_validade_captura(Peca_t pecaMover, Movimento_t movime
 
     return (movimentoEvalido && casaCapturarEvalida && !casaMoverOcupada); 
 }
+
+void Tabuleiro_t::set_tabuleiro_testes(std::vector<Peca_t> tabuleiro) {
+    _tabuleiro = tabuleiro;
+}
