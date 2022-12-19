@@ -30,6 +30,9 @@ class InterfaceGrafica {
         /// @brief Essa função adiciona a quantidade de capturas
         void somar_placar_capturas();
 
+        /// @brief Essa função adiciona ao placar do jogador X
+        void somar_placar_rodadas();
+
     public:
         /// @brief Construtor
         /// @param tabuleiro ponteiro para o tabuleiro do jogo 
@@ -49,11 +52,6 @@ class InterfaceGrafica {
         /// @brief Lê o comando dado pelo jogador
         /// @return Retorna uma string com o comando dado pelo indivíduo
         std::string ler_comando();
-
-        /// @brief Essa função adiciona ao placar do jogador X
-        /// @param jogador Jogador que estará tendo seu placar somado
-        /// @param valor Um unsigned int equivalente ao valor que será somado
-        void somar_placar_rodadas(int jogador,unsigned int valor);
 
         /// @brief Essa função realça o comando do menu escolhido 
         /// @param opcao A opção que está sendo escolhida
