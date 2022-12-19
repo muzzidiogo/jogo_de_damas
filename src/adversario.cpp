@@ -29,4 +29,5 @@ void Adversario_t::jogar() {
             }
         }
     }
+    delete melhorMovimento;
 }

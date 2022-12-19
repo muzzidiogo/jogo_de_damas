@@ -17,3 +17,21 @@ Posicao_t Peca_t::get_posicao() {
 int Peca_t::get_cor() {
     return _cor;
 }
+
+bool Peca_t::operator ==(Peca_t peca) const {
+    if((_posicao.coluna == peca.get_posicao().coluna) &&
+       (_posicao.linha == peca.get_posicao().linha) &&
+       (_cor == peca.get_cor())){
+        return true;
+    }
+    return false;
+}
+
+bool Peca_t::operator !=(Peca_t peca) const {
+    if((_posicao.coluna != peca.get_posicao().coluna) ||
+       (_posicao.linha != peca.get_posicao().linha) ||
+       (_cor != peca.get_cor())){
+        return true;
+    }
+    return false;
+}
