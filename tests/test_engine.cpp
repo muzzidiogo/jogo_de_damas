@@ -45,6 +45,10 @@ TEST_CASE("Teste nbool") {
     engine.get_maior(tabuleiro, Cores::BRANCO, pecaPreencher, capturasPreencher);
 
     CHECK_EQ(capturasPreencher.size(), 1);
+    CHECK_EQ(capturasPreencher[0].linha, NovoTabuleiro[0].get_posicao().linha);
+    CHECK_EQ(capturasPreencher[0].coluna, NovoTabuleiro[0].get_posicao().coluna);
+    CHECK_EQ(pecaPreencher.get_posicao().linha, NovoTabuleiro[1].get_posicao().linha);
+    CHECK_EQ(pecaPreencher.get_posicao().coluna, NovoTabuleiro[1].get_posicao().coluna);
 }
 /*
 TEST_CASE("Teste Captura 1") {
