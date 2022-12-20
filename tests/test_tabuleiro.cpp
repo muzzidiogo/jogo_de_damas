@@ -55,3 +55,39 @@ TEST_CASE("TESTANDO verificar_pos_saiu_tabuleiro") {
     CHECK_EQ(true, tabuleiro.verificar_pos_saiu_tabuleiro({10,0}));
     CHECK_EQ(true, tabuleiro.verificar_pos_saiu_tabuleiro({7,8}));
 }
+
+TEST_CASE("TESTANDO set_tabuleiro_testes") {
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::PRETO,Posicao_t{1,1}), 
+                                         Peca_t(Cores::BRANCO,Posicao_t{1,5})};
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    tabuleiro.set_tabuleiro_testes(NovoTabuleiro);
+    CHECK_EQ(2, tabuleiro.get_tabuleiro().size());
+    CHECK_EQ(Peca_t(Cores::PRETO,Posicao_t{1,1}), tabuleiro.get_tabuleiro()[0]);
+    CHECK_EQ(Peca_t(Cores::BRANCO,Posicao_t{1,5}), tabuleiro.get_tabuleiro()[1]);
+}
+
+TEST_CASE("TESTANDO copia_tabuleiro") {
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::PRETO,Posicao_t{1,1}), 
+                                         Peca_t(Cores::BRANCO,Posicao_t{1,5})};
+    Tabuleiro_t tabuleiroAntigo = Tabuleiro_t();
+    tabuleiroAntigo.set_tabuleiro_testes(NovoTabuleiro);
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    tabuleiro.copia_tabuleiro(tabuleiroAntigo);
+    CHECK_EQ(2, tabuleiro.get_tabuleiro().size());
+    CHECK_EQ(Peca_t(Cores::PRETO,Posicao_t{1,1}), tabuleiro.get_tabuleiro()[0]);
+    CHECK_EQ(Peca_t(Cores::BRANCO,Posicao_t{1,5}), tabuleiro.get_tabuleiro()[1]);
+}
+
+TEST_CASE("TESTANDO verifica_validade_captura") {
+    Tabuleiro_t tabuleiro;
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::PRETO,Posicao_t{4,4}), 
+                                         Peca_t(Cores::BRANCO,Posicao_t{5,5})};
+    tabuleiro.set_tabuleiro_testes(NovoTabuleiro);
+    bool test = tabuleiro.verifica_validade_captura(tabuleiro.get_tabuleiro()[1], {-1,-1});
+    bool test2 = tabuleiro.verifica_validade_captura(tabuleiro.get_tabuleiro()[0], {1,1});
+    bool test3 = tabuleiro.verifica_validade_captura(tabuleiro.get_tabuleiro()[1], {-1,1});
+    CHECK_EQ(true, test);
+    CHECK_EQ(true, test2);
+    CHECK_EQ(false, test3);
+
+}

@@ -1,5 +1,7 @@
 #include <iostream>
 #include "../include/tabuleiro.hpp"
+#include "../include/engine.hpp"
+#include "../include/adversario.hpp"
 #include "../include/interface.hpp"
 
 //================ DEFINE ================
@@ -9,6 +11,8 @@
 
 int main(int argc, char const *argv[]) {
     Tabuleiro_t tabuleiro = Tabuleiro_t();
+    Engine engine = Engine();
+    Adversario_t adversario = Adversario_t(&tabuleiro, &engine);
 
     // GERAR JANELA ======================
     InterfaceGrafica interface = InterfaceGrafica(&tabuleiro, LINHAS, COLUNAS);
@@ -92,6 +96,12 @@ int main(int argc, char const *argv[]) {
             }
 
             interface.desenhar_main();
+        }
+        break;
+
+        case  'a':  //  COMANDO JOGAR
+        {
+            adversario.jogar();
         }
         break;
         

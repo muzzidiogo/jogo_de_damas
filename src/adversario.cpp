@@ -8,7 +8,7 @@ Adversario_t::Adversario_t(Tabuleiro_t *tabuleiro, Engine *engine) {
 void Adversario_t::jogar() {
     PecaPorCapturas_t *melhorMovimento = _engine->get_maior(*_tabuleiro, Cores::PRETO);
     if(melhorMovimento->posRemover->size() > 0) {
-        for(Posicao_t posicao : *melhorMovimento->posRemover) {
+        for(Posicao_t posicao : *(melhorMovimento->posRemover)) {
             Movimento_t movimento = {int(posicao.linha), int(posicao.coluna)};
             _tabuleiro->captura_peca(melhorMovimento->peca, movimento);
         }
