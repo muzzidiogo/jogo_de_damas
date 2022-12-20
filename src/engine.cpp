@@ -1,4 +1,6 @@
 #include "../include/engine.hpp"
+#include <iostream>
+
 Tabuleiro_t * Engine::aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca) {
   Tabuleiro_t *tabuleiroNovo = new Tabuleiro_t(); 
   tabuleiroNovo->copia_tabuleiro(tabuleiro);
@@ -95,4 +97,5 @@ void Engine::get_maior(Tabuleiro_t tabuleiro, char cor, Peca_t &pecaPreencher, s
       }
     }
   }
+  std::cout << maiorQuantidade << std::endl;
 }
