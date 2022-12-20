@@ -1,5 +1,4 @@
 #include "../include/engine.hpp"
-
 Tabuleiro_t * Engine::aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca) {
   Tabuleiro_t *tabuleiroNovo = new Tabuleiro_t(); 
   tabuleiroNovo->copia_tabuleiro(tabuleiro);
@@ -78,22 +77,22 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
   return 0;    
 }
 
-PecaPorCapturas_t *Engine::get_maior(Tabuleiro_t tabuleiro, char cor) {
-  PecaPorCapturas_t *maiorPeca = (new PecaPorCapturas_t);
-
-  int maiorQuantidade = -1;
+void Engine::get_maior(Tabuleiro_t tabuleiro, char cor, Peca_t &pecaPreencher, std::vector<Posicao_t> &posicaoPreencher) {
+  int maiorQuantidade = 0;
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {
     if (peca.get_cor() == cor) {
       _numCapturas = 0; _numCapturasMax = 0;
       _posRemover.clear(); _posRemoverMax.clear();
       this->conta_jogadas(tabuleiro, peca);
 
-      if (_numCapturasMax > maiorQuantidade) {
-        maiorPeca->peca = peca;
-        maiorPeca->posRemover->clear();
-        for (Posicao_t posicao : _posRemoverMax) maiorPeca->posRemover->push_back(posicao);
+      if (_numCapturasMax >= maiorQuantidade) {
+        maiorQuantidade = _numCapturasMax;
+        pecaPreencher = peca;
+        posicaoPreencher.clear();
+        for (Posicao_t pos : _posRemoverMax) {
+          posicaoPreencher.push_back(pos); 
+        }
       }
     }
   }
-  return maiorPeca;
 }

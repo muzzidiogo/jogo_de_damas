@@ -1,4 +1,4 @@
-#include "../include/adversario.hpp"
+/* #include "../include/adversario.hpp"
 
 Adversario_t::Adversario_t(Tabuleiro_t *tabuleiro, Engine *engine) {
     _tabuleiro = tabuleiro;
@@ -30,4 +30,4 @@ void Adversario_t::jogar() {
         }
     }
     delete melhorMovimento;
-}
+} */

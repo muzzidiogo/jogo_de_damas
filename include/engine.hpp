@@ -20,7 +20,7 @@ class Engine {
         void roda_engine(Tabuleiro_t tabuleiro, char cor);
         Tabuleiro_t * aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca);
     public:
-        PecaPorCapturas_t * get_maior(Tabuleiro_t tabuleiro, char cor);
+        void get_maior(Tabuleiro_t tabuleiro, char cor, Peca_t &pecaPreencher, std::vector<Posicao_t> &posicaoPreencher);
 };
 
 #endif
