@@ -50,7 +50,9 @@ bool Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca){
     // if(procura_peca(novaPosicao, peca.get_cor())){
     //     captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);
     // }
-    peca.andar(novaPosicao);
+    for(Peca_t p : _tabuleiro){
+        if(p == peca) p.andar(novaPosicao);
+    }
     return true;
 }
 

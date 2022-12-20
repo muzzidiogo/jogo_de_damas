@@ -24,3 +24,34 @@ TEST_CASE("TESTANDO O CONSTRUTOR") {
         }
     }
 }
+
+TEST_CASE("TESTANDO remove_peca") {
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    bool tester=false;
+    Posicao_t posTeste{0,6};
+    tabuleiro.remover_peca(posTeste);
+    for (Peca_t peca : tabuleiro.get_tabuleiro()) {
+        if((peca.get_posicao().coluna == posTeste.coluna) 
+            && (peca.get_posicao().linha == posTeste.linha)){
+            tester=true;
+        }
+    }
+    CHECK_EQ(false, tester);
+}
+
+TEST_CASE("TESTANDO verifica_posicao") {
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    CHECK_EQ(false, tabuleiro.verificar_posicao({4,4}));
+    CHECK_EQ(false, tabuleiro.verificar_posicao({3,1}));
+    CHECK_EQ(true, tabuleiro.verificar_posicao({0,0}));
+    CHECK_EQ(true, tabuleiro.verificar_posicao({7,7}));
+}
+
+TEST_CASE("TESTANDO verificar_pos_saiu_tabuleiro") {
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    CHECK_EQ(false, tabuleiro.verificar_pos_saiu_tabuleiro({4,4}));
+    CHECK_EQ(false, tabuleiro.verificar_pos_saiu_tabuleiro({3,1}));
+    CHECK_EQ(false, tabuleiro.verificar_pos_saiu_tabuleiro({2,2}));
+    CHECK_EQ(true, tabuleiro.verificar_pos_saiu_tabuleiro({10,0}));
+    CHECK_EQ(true, tabuleiro.verificar_pos_saiu_tabuleiro({7,8}));
+}
