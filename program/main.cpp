@@ -37,6 +37,7 @@ int main(int argc, char const *argv[]) {
             else {
                 tabuleiro = Tabuleiro_t();
                 interface.reiniciar();
+                interface.reiniciar_placar();
                 interface.desenhar_main();
                 reiniciar = false;
             }
@@ -93,15 +94,6 @@ int main(int argc, char const *argv[]) {
             interface.desenhar_main();
         }
         break;
-
-        case  't':  //  COMANDO JOGAR
-        {
-            std::vector<Peca_t> newtab = tabuleiro.get_tabuleiro();
-            newtab.pop_back();
-            tabuleiro.set_tabuleiro_testes(newtab);
-            interface.desenhar_main();
-        }
-        break; 
         
         default:
             interface.realcar_menu(Menu::Default);

@@ -68,6 +68,8 @@ class InterfaceGrafica {
         /// @return
         WINDOW* get_win();
 
+        void reiniciar_placar();
+
         ~InterfaceGrafica();
 };
 

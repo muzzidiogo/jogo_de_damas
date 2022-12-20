@@ -220,6 +220,7 @@ void InterfaceGrafica::reiniciar() {
     }
     _placarCapturas[Jogador::X] = 0;
     _placarCapturas[Jogador::O] = 0;
+    _tabuleiro->reiniciar_tabuleiro();
 }
 
 void InterfaceGrafica::somar_placar_rodadas() {
@@ -249,4 +250,9 @@ WINDOW* InterfaceGrafica::get_win() {
 
 InterfaceGrafica::~InterfaceGrafica() {
     endwin();
+}
+
+void InterfaceGrafica::reiniciar_placar() {
+    _placarRodadas[Jogador::O] = 0;
+    _placarRodadas[Jogador::X] = 0;
 }

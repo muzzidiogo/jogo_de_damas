@@ -109,3 +109,21 @@ bool Tabuleiro_t::verifica_validade_captura(Peca_t pecaMover, Movimento_t movime
 void Tabuleiro_t::set_tabuleiro_testes(std::vector<Peca_t> tabuleiro) {
     _tabuleiro = tabuleiro;
 }
+
+void Tabuleiro_t::reiniciar_tabuleiro() {
+    _tabuleiro.clear();
+    for(unsigned int i = 0; i<3; i++) {
+        for(unsigned int j=0; j<8; j++) {
+            if((i%2 != 0 && j%2 != 0) || ((i%2 == 0 && j%2 == 0))) {
+                _tabuleiro.push_back(Peca_t(Cores::PRETO, Posicao_t{i, j}));
+            }
+        }
+    }
+    for(unsigned int i = 5; i<8; i++) {
+        for(unsigned int j=0; j<8; j++) {
+            if((i%2 != 0 && j%2 != 0) || ((i%2 == 0 && j%2 == 0))) {
+                _tabuleiro.push_back(Peca_t(Cores::BRANCO, Posicao_t{i, j}));
+            }
+        }
+    }
+}
