@@ -1,6 +1,7 @@
 #ifndef PECA_HPP
 #define PECA_HPP
 #include <vector>
+#include <cmath>
 //================ EXTRAS ================
 typedef struct {
     unsigned int linha;
@@ -19,7 +20,8 @@ private:
 public:
     Peca_t(); //construtor vazio 
     Peca_t(int cor, Posicao_t posicao);
-    virtual void andar(Posicao_t posicao);
+    void andar(Posicao_t novaPosicao);
+    virtual bool verifica_movimento(Posicao_t novaPosicao);
     Posicao_t get_posicao();
     int get_cor();
     bool operator ==(Peca_t peca) const;
