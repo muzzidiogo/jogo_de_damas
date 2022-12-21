@@ -46,15 +46,15 @@ TEST_CASE("Teste com captura 1") {
 }
 
 TEST_CASE("Teste com captura 2") {
-    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::PRETO,Posicao_t{1,1}), 
-                                         Peca_t(Cores::BRANCO,Posicao_t{2,2}),
-                                         Peca_t(Cores::BRANCO,Posicao_t{2,4})};
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::BRANCO,Posicao_t{1,1}), 
+                                         Peca_t(Cores::PRETO,Posicao_t{2,2}),
+                                         Peca_t(Cores::PRETO,Posicao_t{4,4})};
     Tabuleiro_t tabuleiro = Tabuleiro_t();
     tabuleiro.set_tabuleiro_testes(NovoTabuleiro);
     Engine engine;
     Peca_t peca;
     std::vector<Posicao_t> capturas;
-    engine.get_maior(tabuleiro, Cores::PRETO, peca, capturas);
+    engine.get_maior(tabuleiro, Cores::BRANCO, peca, capturas);
 
     CHECK_EQ(capturas.size(), 2);
     CHECK_EQ(capturas[0].linha, NovoTabuleiro[1].get_posicao().linha);

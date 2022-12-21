@@ -10,11 +10,20 @@ Tabuleiro_t * Engine::aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimen
 }
 
 bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
+  /* std::cout << "============" << std::endl;
+  for (Peca_t pecaTeste : tabuleiro.get_tabuleiro()) {
+    std::cout << pecaTeste.get_posicao().linha << " " << pecaTeste.get_posicao().coluna << std::endl;
+  }
+  std::cout << "-------------" << std::endl;
+  std::cout << peca.get_posicao().linha << " " << peca.get_posicao().coluna << std::endl;
+  std::cout << "============\n" << std::endl;
+   */
   if (tabuleiro.verifica_validade_captura(peca, {-1, -1})) { 
     Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {-1, -1}, peca);
     
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha - 1, peca.get_posicao().coluna - 1});
+    peca = Peca_t(peca.get_cor(), {peca.get_posicao().linha - 2, peca.get_posicao().coluna - 2});
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -28,9 +37,10 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 
   if (tabuleiro.verifica_validade_captura(peca, {1, 1})) { 
     Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {1, 1}, peca);
-    
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha + 1, peca.get_posicao().coluna + 1});
+    peca = Peca_t(peca.get_cor(), {peca.get_posicao().linha + 2, peca.get_posicao().coluna + 2});
+
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -44,9 +54,10 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 
   if (tabuleiro.verifica_validade_captura(peca, {1, -1})){ 
     Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {1, -1}, peca);
-
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha + 1, peca.get_posicao().coluna - 1});
+    peca = Peca_t(peca.get_cor(), {peca.get_posicao().linha + 2, peca.get_posicao().coluna - 2});
+
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -60,9 +71,11 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
   
   if (tabuleiro.verifica_validade_captura(peca, {-1, 1})) { 
     Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {-1, 1}, peca);
-    
     _numCapturas++; 
     _posRemover.push_back({peca.get_posicao().linha - 1, peca.get_posicao().coluna + 1});
+    peca = Peca_t(peca.get_cor(), {peca.get_posicao().linha - 2, peca.get_posicao().coluna + 2});
+
+
     if (_numCapturas > _numCapturasMax) {
       _numCapturasMax = _numCapturas;
       _posRemoverMax.clear();
@@ -81,6 +94,7 @@ bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
 
 void Engine::get_maior(Tabuleiro_t tabuleiro, char cor, Peca_t &pecaPreencher, std::vector<Posicao_t> &posicaoPreencher) {
   int maiorQuantidade = 0;
+  
   for (Peca_t peca : tabuleiro.get_tabuleiro()) {
     if (peca.get_cor() == cor) {
       _numCapturas = 0; _numCapturasMax = 0;
@@ -97,5 +111,4 @@ void Engine::get_maior(Tabuleiro_t tabuleiro, char cor, Peca_t &pecaPreencher, s
       }
     }
   }
-  std::cout << maiorQuantidade << std::endl;
 }

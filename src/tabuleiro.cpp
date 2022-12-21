@@ -24,6 +24,7 @@ void Tabuleiro_t::remover_peca(Posicao_t posicao) { //fonte de bug???
            (it->get_posicao().linha == posicao.linha))
         {
             _tabuleiro.erase(it);
+            break;
         }
     }
 }
@@ -72,13 +73,11 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Movimento_t movimento) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     
-    Peca_t *pecaAndar;
-    for (Peca_t peca : _tabuleiro) {
-        if (peca.get_posicao().linha == linha && peca.get_posicao().coluna == coluna) 
-            pecaAndar = &peca;
+    for (int i = 0; i < _tabuleiro.size(); i++) {
+        if (_tabuleiro[i].get_posicao().linha == linha && _tabuleiro[i].get_posicao().coluna == coluna) {
+            _tabuleiro[i].andar({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
+        }
     }
-
-    pecaAndar->andar({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
     this->remover_peca({linha + movimento.linha, coluna + movimento.coluna});
 }
 
