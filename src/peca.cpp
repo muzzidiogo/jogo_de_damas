@@ -7,8 +7,10 @@ Peca_t::Peca_t(int cor, Posicao_t posicao)
 :_cor(cor), _posicao(posicao){}
 
 void Peca_t::andar(Posicao_t novaPosicao){
-    _posicao.coluna = novaPosicao.coluna;
-    _posicao.linha = novaPosicao.linha;
+    if(verifica_movimento(novaPosicao)){
+        _posicao.coluna = novaPosicao.coluna;
+        _posicao.linha = novaPosicao.linha;
+    }
 }
 
 bool Peca_t::verifica_movimento(Posicao_t novaPosicao){
