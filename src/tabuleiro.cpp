@@ -30,9 +30,9 @@ void Tabuleiro_t::remover_peca(Posicao_t posicao) { //fonte de bug???
 }
 
 bool Tabuleiro_t::verificar_posicao(Posicao_t posicao){
-    for(Peca_t peca : _tabuleiro) {
-        if((peca.get_posicao().coluna == posicao.coluna) && 
-           (peca.get_posicao().linha == posicao.linha)) 
+    for(size_t i = 0; i<_tabuleiro.size(); i++) {
+        if((_tabuleiro[i].get_posicao().coluna == posicao.coluna) && 
+           (_tabuleiro[i].get_posicao().linha == posicao.linha)) 
         {
             return true;
         }
@@ -109,6 +109,10 @@ bool Tabuleiro_t::verifica_validade_captura(Peca_t pecaMover, Movimento_t movime
 
 void Tabuleiro_t::set_tabuleiro_testes(std::vector<Peca_t> tabuleiro) {
     _tabuleiro = tabuleiro;
+}
+
+std::vector<Peca_t>* Tabuleiro_t::get_ptr_tabuleiro(){
+    return &_tabuleiro;
 }
 
 void Tabuleiro_t::reiniciar_tabuleiro() {

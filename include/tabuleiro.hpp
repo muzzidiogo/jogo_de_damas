@@ -24,7 +24,8 @@ public:
     void captura_peca(Peca_t pecaJogada, Movimento_t movimento);  
     bool verifica_validade_captura(Peca_t peca, Movimento_t movimento);
     void reiniciar_tabuleiro();
-    
+    std::vector<Peca_t>* get_ptr_tabuleiro();
+
     void set_tabuleiro_testes(std::vector<Peca_t> tabuleiro); 
 };
 
