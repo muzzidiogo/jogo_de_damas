@@ -114,3 +114,21 @@ TEST_CASE("Teste com captura 3 (duas pecas podem capturar a mesma peca inimiga)"
     CHECK_EQ(peca.get_posicao().coluna, NovoTabuleiro[0].get_posicao().coluna);
 }
 
+TEST_CASE("Teste com captura 4 (duas pecas podem capturar a mesma peca inimiga)") {
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::BRANCO,Posicao_t{3,3}), 
+                                         Peca_t(Cores::PRETO,Posicao_t{4,4}),
+                                         Peca_t(Cores::BRANCO, Posicao_t{3, 5}), // deve escolher esse caminho
+                                         };
+    Tabuleiro_t tabuleiro = Tabuleiro_t();
+    tabuleiro.set_tabuleiro_testes(NovoTabuleiro);
+    Engine engine;
+    Peca_t peca;
+    std::vector<Posicao_t> capturas;
+    engine.get_maior(tabuleiro, Cores::BRANCO, peca, capturas);
+
+    CHECK_EQ(capturas.size(), 1);
+    CHECK_EQ(capturas[0].linha, NovoTabuleiro[1].get_posicao().linha);
+    CHECK_EQ(capturas[0].coluna, NovoTabuleiro[1].get_posicao().coluna);
+    CHECK_EQ(peca.get_posicao().linha, NovoTabuleiro[2].get_posicao().linha);
+    CHECK_EQ(peca.get_posicao().coluna, NovoTabuleiro[2].get_posicao().coluna);
+}
