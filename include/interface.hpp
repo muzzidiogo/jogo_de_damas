@@ -68,7 +68,11 @@ class InterfaceGrafica {
         /// @return
         WINDOW* get_win();
 
+        /// @brief reinicia o placar de rodadas para 0x0
         void reiniciar_placar();
+
+        /// @brief Desenha a página principal da interface gráfica
+        void mensagem_de_erro(char const * mensagem);
 
         ~InterfaceGrafica();
 };

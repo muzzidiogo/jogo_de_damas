@@ -256,3 +256,9 @@ void InterfaceGrafica::reiniciar_placar() {
     _placarRodadas[Jogador::O] = 0;
     _placarRodadas[Jogador::X] = 0;
 }
+
+void InterfaceGrafica::mensagem_de_erro(char const * mensagem){
+    wattron(_win, COLOR_PAIR(VERMELHO));
+    mvwprintw(_win, (_linhas-3), 1, "%s", mensagem);              
+    wattroff(_win, COLOR_PAIR(VERMELHO));
+}

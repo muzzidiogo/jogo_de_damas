@@ -86,16 +86,12 @@ int main(int argc, char const *argv[]) {
             mvwprintw(win, (LINHAS-3), 1, "Jogada: ");
             std::string comando = interface.ler_comando();
             mvwprintw(win, (LINHAS-3), 1, "%s", CLEAR_LINES.c_str());
-            if(comando.size() == 10 || comando == "") {
+            if(comando.size() <=10 || comando == "") {
                 interface.adicionar_jogada(comando);
             }
             else {
-                wattron(win, COLOR_PAIR(VERMELHO));
-                mvwprintw(win, (LINHAS-3), 1, "Comando inválido, tente novamente");              
-                wattroff(win, COLOR_PAIR(VERMELHO));
+                interface.mensagem_de_erro("COMANDO INVALIDO");
             }
-
-            interface.desenhar_main();
         }
         break;
 
