@@ -8,7 +8,7 @@ class Jogador_t {
         InterfaceGrafica* _interface;
     public:
         Jogador_t(InterfaceGrafica* interface);
-        void jogar();
+        bool jogar();
 };
 
 #endif //JOGADOR_HPP

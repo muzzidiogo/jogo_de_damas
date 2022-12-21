@@ -4,7 +4,7 @@ Jogador_t::Jogador_t(InterfaceGrafica* interface){
     _interface = interface;
 }
 
-void Jogador_t::jogar(){
+bool Jogador_t::jogar(){
     // VARIÁVEIS PARA O MENU
     bool reiniciar = false;
     bool sair = false;
@@ -74,6 +74,7 @@ void Jogador_t::jogar(){
             if(comando.size() == 10 || comando == "") {
                 _interface->adicionar_jogada(comando);
                 _interface->desenhar_main();
+                return true;
             }
             else {
                 _interface->mensagem_de_erro("COMANDO INVALIDO");
@@ -86,4 +87,5 @@ void Jogador_t::jogar(){
             break;
         }
     }
+    return false;
 }

@@ -21,6 +21,26 @@ int main(int argc, char const *argv[]) {
     
     Jogador_t jogador = Jogador_t(&interface);
     
+    bool loopJogo = true;
+    int jogadorAtivo = Jogador::X;
+    while(loopJogo){
+        switch (jogadorAtivo)
+        {
+        case Jogador::X:
+            loopJogo = jogador.jogar();
+            jogadorAtivo = Jogador::O;
+            break;
+        
+        case Jogador::O:
+            adversario.jogar();
+            interface.desenhar_main();
+            jogadorAtivo = Jogador::X;
+            break;
+        
+        default:
+            break;
+        }
+    }
     jogador.jogar();
     return 0;
 }
