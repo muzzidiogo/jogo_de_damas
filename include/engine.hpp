@@ -21,12 +21,14 @@ class Engine {
         /// @brief Funcao recursiva responsavel por encontrar o caminho com maior quantidade de jogadas de uma peca
         /// @param tabuleiro tabuleiro do jogo 
         /// @param peca peca a ser analisada (ira capturar as outras)
+        /// @return true, caso seja possivel realizar alguma captura, false caso contrario
         bool conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca);
 
         /// @brief Funcao que cria uma copia do tabuleiro, realiza a captura determinada pela conta_jogadas e retorna o tabuleiro modificado
         /// @param tabuleiro tabuleiro a ser copiado 
         /// @param peca peca que ira realizar a captura
         /// @param movimento direcao que a captura tomara (Ex: [2, 2] comendo [1, 1] tem movimento [-1, -1])
+        /// @return copia do tabuleiro antigo, com a captura
         Tabuleiro_t * aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimento_t movimento, Peca_t peca);
     public:
         /// @brief Funcao que conta as capturas possiveis para cada peca e "retorna" a peca que tiver a maior quantidade de capturas, junto com as capturas possiveis
