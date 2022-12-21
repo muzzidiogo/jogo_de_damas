@@ -73,7 +73,7 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Movimento_t movimento) {
     unsigned int linha = pecaJogada.get_posicao().linha;
     unsigned int coluna = pecaJogada.get_posicao().coluna;
     
-    for (int i = 0; i < _tabuleiro.size(); i++) {
+    for (size_t i = 0; i < _tabuleiro.size(); i++) {
         if (_tabuleiro[i].get_posicao().linha == linha && _tabuleiro[i].get_posicao().coluna == coluna) {
             _tabuleiro[i].andar({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
         }

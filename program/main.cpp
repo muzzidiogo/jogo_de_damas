@@ -102,6 +102,7 @@ int main(int argc, char const *argv[]) {
         case  'a':  //  COMANDO JOGAR
         {
             adversario.jogar();
+            interface.desenhar_main();
         }
         break;
         
