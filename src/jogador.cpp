@@ -54,7 +54,7 @@ bool Jogador_t::jogar(){
                 sair = true;
             }
             else {
-                LOOP = false;
+                LOOP =  false;
             }
             break;
 

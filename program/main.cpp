@@ -41,6 +41,5 @@ int main(int argc, char const *argv[]) {
             break;
         }
     }
-    jogador.jogar();
     return 0;
 }
