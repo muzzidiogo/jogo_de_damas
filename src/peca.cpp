@@ -11,6 +11,15 @@ void Peca_t::andar(Posicao_t novaPosicao){
     _posicao.linha = novaPosicao.linha;
 }
 
+bool Peca_t::verifica_movimento(Posicao_t novaPosicao){
+    if(novaPosicao.linha < 8 && novaPosicao.coluna < 8
+    && abs((int)_posicao.linha - (int)novaPosicao.linha) == 1
+    && _posicao.coluna != novaPosicao.coluna){
+        return true;
+    }
+    else return false;
+}
+
 Posicao_t Peca_t::get_posicao() {
     return _posicao;
 }
