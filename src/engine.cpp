@@ -10,14 +10,6 @@ Tabuleiro_t * Engine::aloca_tabuleiro_com_captura(Tabuleiro_t tabuleiro, Movimen
 }
 
 bool Engine::conta_jogadas(Tabuleiro_t tabuleiro, Peca_t peca) {
-  /* std::cout << "============" << std::endl;
-  for (Peca_t pecaTeste : tabuleiro.get_tabuleiro()) {
-    std::cout << pecaTeste.get_posicao().linha << " " << pecaTeste.get_posicao().coluna << std::endl;
-  }
-  std::cout << "-------------" << std::endl;
-  std::cout << peca.get_posicao().linha << " " << peca.get_posicao().coluna << std::endl;
-  std::cout << "============\n" << std::endl;
-   */
   if (tabuleiro.verifica_validade_captura(peca, {-1, -1})) { 
     Tabuleiro_t *tabuleiroNovo = aloca_tabuleiro_com_captura(tabuleiro, {-1, -1}, peca);
     
