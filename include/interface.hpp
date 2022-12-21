@@ -68,6 +68,15 @@ class InterfaceGrafica {
         /// @return
         WINDOW* get_win();
 
+        
+        /// @brief Retorna quantidade max de linhas
+        /// @return
+        int get_linhas();
+        
+        /// @brief Retorna quantidade max de colunas 
+        /// @return
+        int get_colunas();
+
         /// @brief reinicia o placar de rodadas para 0x0
         void reiniciar_placar();
 

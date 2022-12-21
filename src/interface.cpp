@@ -262,3 +262,11 @@ void InterfaceGrafica::mensagem_de_erro(char const * mensagem){
     mvwprintw(_win, (_linhas-3), 1, "%s", mensagem);              
     wattroff(_win, COLOR_PAIR(VERMELHO));
 }
+
+int InterfaceGrafica::get_linhas(){
+    return _linhas;
+}
+
+int InterfaceGrafica::get_colunas(){
+    return _colunas;
+}
