@@ -47,14 +47,12 @@ bool Tabuleiro_t::verificar_pos_saiu_tabuleiro(Posicao_t posicao) {
     return false;
 }
 
-bool Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca){
-    // if(procura_peca(novaPosicao, peca.get_cor())){
-    //     captura_peca(peca, novaPosicao, novaPosicao.linha, novaPosicao.coluna);
-    // }
-    for(Peca_t p : _tabuleiro){
-        if(p == peca) p.andar(novaPosicao);
+void Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t & peca){
+    peca.andar(novaPosicao);
+    if ((peca.get_cor() == Cores::BRANCO && peca.get_posicao().linha == 7 && peca.get_posicao().coluna == 7) ||
+        (peca.get_cor() == Cores::PRETO && peca.get_posicao().linha == 0 && peca.get_posicao().coluna == 0)) {
+            peca = Dama(peca.get_cor(), peca.get_posicao());
     }
-    return true;
 }
 
 std::vector<Peca_t> Tabuleiro_t::get_tabuleiro(){
@@ -75,8 +73,8 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Movimento_t movimento) {
     
     for (size_t i = 0; i < _tabuleiro.size(); i++) {
         if (_tabuleiro[i].get_posicao().linha == linha && _tabuleiro[i].get_posicao().coluna == coluna) {
-            _tabuleiro[i].andar({linha + movimento.linha, coluna + movimento.coluna});
-            _tabuleiro[i].andar({_tabuleiro[i].get_posicao().linha + movimento.linha, _tabuleiro[i].get_posicao().coluna + movimento.coluna});
+            this->atualizar_tabuleiro({linha + movimento.linha, coluna + movimento.coluna}, _tabuleiro[i]);
+            this->atualizar_tabuleiro({_tabuleiro[i].get_posicao().linha + movimento.linha, _tabuleiro[i].get_posicao().coluna + movimento.coluna}, _tabuleiro[i]);
         }
     }
     this->remover_peca({linha + movimento.linha, coluna + movimento.coluna});

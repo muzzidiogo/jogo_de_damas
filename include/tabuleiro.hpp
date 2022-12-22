@@ -3,6 +3,7 @@
 
 
 #include "peca.hpp"
+#include "dama.hpp"
 
 typedef struct {
     int linha;
@@ -26,7 +27,11 @@ public:
     bool verificar_posicao(Posicao_t posicao);
 
     bool verificar_pos_saiu_tabuleiro(Posicao_t posicao);
-    bool atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t peca);
+
+    /// @brief Funcao que anda com a peca e verifica se ela virou dama ou nao
+    /// @param novaPosicao Posicao para a qual a peca se movera
+    /// @param peca Referencia da peca que sera movida
+    void atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t & peca);
     
     /// @brief Funcao que retorna o vetor de pecas (_tabuleiro)
     /// @return Vetor de pecas
