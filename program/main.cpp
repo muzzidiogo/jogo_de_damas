@@ -19,7 +19,7 @@ int main(int argc, char const *argv[]) {
     InterfaceGrafica interface = InterfaceGrafica(&tabuleiro, LINHAS, COLUNAS);
     //====================================
     
-    Jogador_t jogador = Jogador_t(&interface);
+    Jogador_t jogador = Jogador_t(&interface, &tabuleiro, &engine);
     
     bool loopJogo = true;
     int jogadorAtivo = Jogador::X;

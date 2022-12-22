@@ -83,11 +83,6 @@ class InterfaceGrafica {
         /// @brief Escreve uma mensagem de erro na interface
         /// @param mensagem mensagem que irá aparecer na interface
         void mensagem_de_erro(char const * mensagem);
-        
-        /// @brief Escreve uma mensagem na interface
-        /// @param mensagem mensagem que irá aparecer na interface
-        /// @param cor cor da mensagem que terá seu display
-        void mensagem(char const * mensagem, int cor);
 
         ~InterfaceGrafica();
 };

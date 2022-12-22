@@ -1,7 +1,40 @@
 #include "../include/jogador.hpp"
+#include <sstream>
+#include <iostream>
 
-Jogador_t::Jogador_t(InterfaceGrafica* interface){
+Jogador_t::Jogador_t(InterfaceGrafica* interface, Tabuleiro_t* tabuleiro, Engine* engine){
     _interface = interface;
+    _tabuleiro = tabuleiro;
+    _engine = engine;
+}
+
+bool Jogador_t::verifica_comando(std::string comando, int* index, Posicao_t* posFinal) {
+    //Separar o comando por palavras
+    std::vector<std::string> elementosComando;
+    std::stringstream ss(comando);
+    std::string tok;
+    while (getline(ss, tok, ' ')) {
+        if (!tok.empty())
+            elementosComando.push_back(tok);
+    }
+    //Analisar comando
+    if(elementosComando.size() != 5) return false;
+    if(elementosComando[0] != "m") return false;
+    std::vector<unsigned int> posicoes;
+    for(int i=1;i<=4;i++) {
+        try {posicoes.push_back(std::stoul(elementosComando[i]));}
+        catch(std::exception &excpt){ return false; }
+    }
+    //Analisa pecano tabuleiro e posicao final
+    for(size_t i=0;i<_tabuleiro->get_ptr_tabuleiro()->size();i++) {
+        if(_tabuleiro->get_ptr_tabuleiro()->at(i) == Peca_t(Cores::BRANCO, Posicao_t{posicoes[1], posicoes[0]})){
+            *index = i;
+            posFinal->coluna = posicoes[2];
+            posFinal->linha= posicoes[3];
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Jogador_t::jogar(){
@@ -71,9 +104,30 @@ bool Jogador_t::jogar(){
             mvwprintw(_interface->get_win(), (_interface->get_linhas()-3), 1, "Jogada: ");
             std::string comando = _interface->ler_comando();
             mvwprintw(_interface->get_win(), (_interface->get_linhas()-3), 1, "%s", CLEAR_LINES.c_str());
-            if(comando.size() == 10 || comando == "") {
-                _interface->adicionar_jogada(comando);
-                _interface->desenhar_main();
+            int index;
+            Posicao_t posFinal;
+            if(verifica_comando(comando, &index, &posFinal)) {
+                Peca_t pecaMover;
+                std::vector<Posicao_t> pecasCapturar;
+                _engine->get_maior(*_tabuleiro, Cores::BRANCO, pecaMover, pecasCapturar);
+                if(pecasCapturar.size()==0) {
+                    _interface->adicionar_jogada(comando);
+                    _tabuleiro->get_ptr_tabuleiro()->at(index).andar(posFinal);
+                    _interface->desenhar_main();
+                }
+                else{
+                    for(Posicao_t posicao : pecasCapturar) {
+                        int linha = posicao.linha - pecaMover.get_posicao().linha;
+                        int coluna = posicao.coluna - pecaMover.get_posicao().coluna;
+                        Movimento_t movimento = {linha, coluna};
+                        _tabuleiro->captura_peca(pecaMover, movimento);
+                        pecaMover.andar({pecaMover.get_posicao().linha+(movimento.linha),
+                                         pecaMover.get_posicao().coluna+(movimento.coluna)});
+                        pecaMover.andar({pecaMover.get_posicao().linha+(movimento.linha),
+                                         pecaMover.get_posicao().coluna+(movimento.coluna)});
+                    }
+                    _interface->adicionar_jogada("Captura Automatica");
+                }
                 return true;
             }
             else {
