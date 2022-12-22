@@ -14,10 +14,20 @@ TEST_CASE("Construtor Peça"){
 
 TEST_CASE("Andar Peça"){
     Posicao_t pos = {0,0};
-    Posicao_t novaPos = {1,1};
     Peca_t p = Peca_t(Cores::BRANCO, pos);
-    p.andar(novaPos);
 
-    CHECK_EQ(novaPos.linha, p.get_posicao().linha);
-    CHECK_EQ(novaPos.coluna, p.get_posicao().coluna);
+    Posicao_t novaPos1 = {1,1}; //Posicao valida
+    p.andar(novaPos1);
+    CHECK_EQ(1, p.get_posicao().linha);
+    CHECK_EQ(1, p.get_posicao().coluna);
+
+    Posicao_t novaPos2 = {1,1}; //Posicao invalida => a peca nao move
+    p.andar(novaPos2);
+    CHECK_EQ(1, p.get_posicao().linha);
+    CHECK_EQ(1, p.get_posicao().coluna);
+
+    Posicao_t novaPos3 = {2,0};//Posicao valida
+    p.andar(novaPos3);
+    CHECK_EQ(2, p.get_posicao().linha);
+    CHECK_EQ(0, p.get_posicao().coluna);
 }
