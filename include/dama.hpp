@@ -8,6 +8,7 @@ public:
     Dama();
     Dama(int cor, Posicao_t posicao);
     bool verifica_movimento(Posicao_t novaPosicao) override;
+    bool e_dama() const override;
 };
 
 #endif

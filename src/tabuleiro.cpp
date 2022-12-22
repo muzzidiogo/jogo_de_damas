@@ -53,16 +53,15 @@ void Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t & peca){
     Dama dama;
     if ((peca.get_cor() == Cores::BRANCO && peca.get_posicao().linha == 7) ||
         (peca.get_cor() == Cores::PRETO && peca.get_posicao().linha == 0)) {
-    
+        
         dama = Dama(peca.get_cor(), peca.get_posicao());
-        auto it = _tabuleiro.begin();
-        while (it != _tabuleiro.end()) {
-            if (*it == peca) {
-                _tabuleiro.erase(it);
-                break;
-            }
-            it = next(it);
-        }    
+        int i;
+        for (i = 0; i < _tabuleiro.size(); i++) {
+            if (_tabuleiro[i] == peca) break;
+        }
+
+        auto it = _tabuleiro.begin() + i;
+        _tabuleiro.erase(it);
         _tabuleiro.push_back(dama);
     }
 }

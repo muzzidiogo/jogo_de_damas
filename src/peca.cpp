@@ -47,3 +47,7 @@ bool Peca_t::operator !=(Peca_t peca) const {
     }
     return false;
 }
+
+bool Peca_t::e_dama() const {
+    return false;
+}

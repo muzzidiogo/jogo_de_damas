@@ -1,5 +1,6 @@
 #include "../third_party/doctest.h"
 #include "../include/tabuleiro.hpp"
+#include <iostream>
 
 TEST_CASE("TESTANDO O CONSTRUTOR") {
     Tabuleiro_t tabuleiro = Tabuleiro_t();
@@ -90,4 +91,16 @@ TEST_CASE("TESTANDO verifica_validade_captura") {
     CHECK_EQ(true, test2);
     CHECK_EQ(false, test3);
 
+}
+
+TEST_CASE("Teste de criacao de dama") {
+    Tabuleiro_t tabuleiro;
+    std::vector<Peca_t> NovoTabuleiro = {Peca_t(Cores::BRANCO,Posicao_t{6,6})};
+    tabuleiro.set_tabuleiro_testes(NovoTabuleiro);
+    tabuleiro.atualizar_tabuleiro({7, 7}, tabuleiro.get_tabuleiro()[0]);
+
+    CHECK_EQ(tabuleiro.get_tabuleiro()[0].get_posicao().linha, 7);
+    CHECK_EQ(tabuleiro.get_tabuleiro()[0].get_posicao().coluna, 7);
+    CHECK_EQ(tabuleiro.get_tabuleiro().size(), 1);
+    CHECK(tabuleiro.get_tabuleiro()[0].e_dama());
 }

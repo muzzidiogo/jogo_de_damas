@@ -10,3 +10,7 @@ bool Dama::verifica_movimento(Posicao_t novaPosicao){
     }
     else return false;
 }
+
+bool Dama::e_dama() const{
+    return true;
+}

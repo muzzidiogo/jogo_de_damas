@@ -42,6 +42,10 @@ public:
     /// @return _cor
     int get_cor();
 
+    /// @brief Funcao que retorna se a peca e dama ou nao
+    /// @return _cor
+    virtual bool e_dama() const;
+
     /// @brief Operador == para duas pecas. Uma peca é igual a outra quando sua
     ///         sua posicao e  cor são iguais
     /// @param peca outra peca comparada
@@ -53,6 +57,8 @@ public:
     /// @param peca outra peca comparada
     /// @return false para igual e true para diferente
     bool operator !=(Peca_t peca) const;
+
+    
 };
 
 #endif //PECA_HPP
