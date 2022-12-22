@@ -37,7 +37,16 @@ public:
     /// @return _cor
     int get_cor();
 
+    /// @brief Operador == para duas pecas. Uma peca é igual a outra quando sua
+    ///         sua posicao e  cor são iguais
+    /// @param peca outra peca comparada
+    /// @return true para igual e false para diferente
     bool operator ==(Peca_t peca) const;
+
+    /// @brief Operador != para duas pecas. Uma peca é diferente da outra quando sua
+    ///         sua posicao ou cor são diferentes
+    /// @param peca outra peca comparada
+    /// @return false para igual e true para diferente
     bool operator !=(Peca_t peca) const;
 };
 
