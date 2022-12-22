@@ -6,11 +6,11 @@
 
   * Para fazer a jogada digite 'j' e escreva o comando:
 
-      'm Xpeça Ypeça Xfinal Yfinal' : para mover a peça deve se escrever 'm' e em
-                                      seguida as cordenadas no tabuleiro para 
-                                      o local inicial e final da peça 
-                                      com numeros inteiros
+      'Xpeça Ypeça Xfinal Yfinal' : para mover a peça deve se escrever 
+                                    as cordenadas no tabuleiro para 
+                                    o local inicial e final da peça 
+                                    com numeros inteiros
 
-      '!' : sair do modo "jogada"
+      '!' : sair do Modo Jogada
 
-Para mais informações, leia o README.md
+                  Para mais informações, leia o README.md

@@ -109,7 +109,10 @@ bool Jogador_t::jogar(){
             mvwprintw(_interface->get_win(), (_interface->get_linhas()-3), 1, "%s", CLEAR_LINES.c_str());
             int index;
             Posicao_t posFinal;
-            if(verifica_comando(comando, &index, &posFinal)) {
+            if(comando == "") {
+                _interface->desenhar_main();
+            }
+            else if(verifica_comando(comando, &index, &posFinal)) {
                 Peca_t pecaMover;
                 std::vector<Posicao_t> pecasCapturar;
                 _engine->get_maior(*_tabuleiro, Cores::BRANCO, pecaMover, pecasCapturar);

@@ -41,12 +41,21 @@ Cada uma das funcionalidades acima podem ser descritas a seguir:
 
 Ademais, para ativar as funcionalidades presentes no menu é necessário se apertar 2 vezes as teclas concernentes às iniciais de cada funcionalidade (uma vez para ativar e outra para confirmar). Desse modo, por exemplo, se desejo Reiniciar o jogo, devo apertar duas vezes a tecla "_r_" minusculo, para Informações, duas vezes "_i_" e para Sair, duas vezes o "_s_";
 
-obs: Na página de informações, no menu haverá a funcionalidade Retornar para voltar para a página principal. Para ativá-la aperte duas vezes a letra "_r_" minuscula;
+**obs.:** Na página de informações, no menu haverá a funcionalidade Retornar para voltar para a página principal. Para ativá-la aperte duas vezes a letra "_r_" minuscula;
 
 
 ### Jogar:
 
 Ao longo do jogo você irá alternar entre sua jogada e a jogada do computador. Se você deseja registrar sua jogada, deverá, na sua vez, apertar a tecla "_j_" minuscula (inicial de jogada).
 
-Após isso digitará seu comando de jogada que deverá ser do formato:
-<center>m Xinicial Yinicial Xfinal Yfinal</center>
+Após isso digitará seu comando de jogada que deverá ser do formato: _Xinicial Yinicial Xfinal Yfinal_. Desse modo, você deverá digitar as coordenadas da peca que você deseja movimentar e as coordenadas do local final que você deseja que essa peca esteja.
+
+É importante citar que, pós você digitar "_j_", você entra no Modo Jogada e tudo que você digitar será adicionado à linha de comando. Por isso, se você deseja sair do Modo Jogada para utilizar alguma funcionalidade do Menu, você deverá digitar a tecla "_!_"
+
+Se seu comando for inválido você será avisado e deverá reiniciar o processo, apertando "_j_" novamente e em seguida escrevendo o comando correto.
+
+**obs.:** O jogo utiliza-se de uma engine criada pelos desenvolvedores para adquirir a melhor captura do jogo. Desse modo, como é obrigação nas regras do jogo o jogador, em uma situação de captura, efetuá-la, o jogo irá ignorar o comando escrito e irá capturar a maior quantidadade de pecas possíveis, assim seguindo as diretrizes do jogo. Quando isso ocorrer aparecerá na memória de jogadas a frase "Captura Automática" em vez do comando digitado.
+
+### Peca e Dama:
+
+Para diferenciar uma peça normal de uma dama a interface utilizou-se da diferenciação por meio do minúsculo e maiúsculo. Ou seja, as peças normais são representadas por letras minusculas e as damas são representadas por letras maiúsculas.
