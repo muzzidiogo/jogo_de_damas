@@ -75,7 +75,8 @@ void Tabuleiro_t::captura_peca(Peca_t pecaJogada, Movimento_t movimento) {
     
     for (size_t i = 0; i < _tabuleiro.size(); i++) {
         if (_tabuleiro[i].get_posicao().linha == linha && _tabuleiro[i].get_posicao().coluna == coluna) {
-            _tabuleiro[i].andar({linha + 2*movimento.linha, coluna + 2*movimento.coluna});
+            _tabuleiro[i].andar({linha + movimento.linha, coluna + movimento.coluna});
+            _tabuleiro[i].andar({_tabuleiro[i].get_posicao().linha + movimento.linha, _tabuleiro[i].get_posicao().coluna + movimento.coluna});
         }
     }
     this->remover_peca({linha + movimento.linha, coluna + movimento.coluna});

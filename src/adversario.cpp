@@ -16,8 +16,10 @@ void Adversario_t::jogar() {
             int coluna = posicao.coluna - pecaMover.get_posicao().coluna;
             Movimento_t movimento = {linha, coluna};
             _tabuleiro->captura_peca(pecaMover, movimento);
-            pecaMover.andar({pecaMover.get_posicao().linha+(2*movimento.linha),
-                             pecaMover.get_posicao().coluna+(2*movimento.coluna)});
+            pecaMover.andar({pecaMover.get_posicao().linha+(movimento.linha),
+                             pecaMover.get_posicao().coluna+(movimento.coluna)});
+            pecaMover.andar({pecaMover.get_posicao().linha+(movimento.linha),
+                             pecaMover.get_posicao().coluna+(movimento.coluna)});
         }
     }
     else {

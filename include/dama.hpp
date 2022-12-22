@@ -6,7 +6,7 @@
 class Dama : public Peca_t{
 public:
     Dama(int cor, Posicao_t posicao);
-    void andar(Posicao_t posicao) override;
+    bool verifica_movimento(Posicao_t novaPosicao) override;
 };
 
 #endif
