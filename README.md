@@ -60,6 +60,6 @@ Se seu comando for inválido você será avisado e deverá reiniciar o processo,
 
 Para diferenciar uma peça normal de uma dama a interface utilizou-se da diferenciação por meio do minúsculo e maiúsculo. Ou seja, as peças normais são representadas por letras minusculas e as damas são representadas por letras maiúsculas.
 
-##Observação:
+## Considerações:
 
 Devido ao uso da biblioteca <ncurses>, o programa provavelmente apresentará leak de memória independentemente da qualidade do código. Pedimos que isso seja levado em consideração caso o valgrind seja utilizado como critério de avaliação.
