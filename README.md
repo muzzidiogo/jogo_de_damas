@@ -27,3 +27,6 @@ Para jogar o Jogo de Damas desenvolvido nesse projeto, é essencial a leitura da
 ### Menu:
 O menu do jogo constitui-se da barra com comandos aparente na parte superior da interface.
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/68508499/209154419-a3a75afd-2c2c-46f1-8398-e4203f558b4e.png" alt="Menu">
+</div>
