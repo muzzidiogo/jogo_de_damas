@@ -49,8 +49,8 @@ bool Tabuleiro_t::verificar_pos_saiu_tabuleiro(Posicao_t posicao) {
 
 void Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t & peca){
     peca.andar(novaPosicao);
-    if ((peca.get_cor() == Cores::BRANCO && peca.get_posicao().linha == 7 && peca.get_posicao().coluna == 7) ||
-        (peca.get_cor() == Cores::PRETO && peca.get_posicao().linha == 0 && peca.get_posicao().coluna == 0)) {
+    if ((peca.get_cor() == Cores::BRANCO && peca.get_posicao().linha == 7) ||
+        (peca.get_cor() == Cores::PRETO && peca.get_posicao().linha == 0)) {
             peca = Dama(peca.get_cor(), peca.get_posicao());
     }
 }
