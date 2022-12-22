@@ -18,10 +18,9 @@ bool Jogador_t::verifica_comando(std::string comando, int* index, Posicao_t* pos
             elementosComando.push_back(tok);
     }
     //Analisar comando
-    if(elementosComando.size() != 5) return false;
-    if(elementosComando[0] != "m") return false;
+    if(elementosComando.size() != 4) return false;
     std::vector<unsigned int> posicoes;
-    for(int i=1;i<=4;i++) {
+    for(int i=0;i<=3;i++) {
         try {posicoes.push_back(std::stoul(elementosComando[i]));}
         catch(std::exception &excpt){ return false; }
     }

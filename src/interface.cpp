@@ -56,12 +56,22 @@ void InterfaceGrafica::desenhar_main() {
     for(Peca_t peca : _tabuleiro->get_tabuleiro()) {
         int linha = peca.get_posicao().linha+inicio;
         int coluna = peca.get_posicao().coluna+inicio;
-        if(peca.get_cor() == Cores::PRETO) {
+        if(peca.get_cor() == Cores::PRETO && peca.e_dama()) {
+            wattron(_win, A_STANDOUT);
+            mvwprintw(_win, linha, coluna+(3*(coluna)), "_O_");
+            wattroff(_win, A_STANDOUT);
+        }
+        else if(peca.get_cor() == Cores::PRETO && !peca.e_dama()) {
             wattron(_win, A_STANDOUT);
             mvwprintw(_win, linha, coluna+(3*(coluna)), "_o_");
             wattroff(_win, A_STANDOUT);
         }
-        else if(peca.get_cor() == Cores::BRANCO) {
+        else if(peca.get_cor() == Cores::BRANCO && peca.e_dama()) {
+            wattron(_win, A_STANDOUT);
+            mvwprintw(_win, linha, coluna+(3*(coluna)), "_X_");
+            wattroff(_win, A_STANDOUT);
+        }
+        else if(peca.get_cor() == Cores::BRANCO && !peca.e_dama()) {
             wattron(_win, A_STANDOUT);
             mvwprintw(_win, linha, coluna+(3*(coluna)), "_x_");
             wattroff(_win, A_STANDOUT);
@@ -153,7 +163,7 @@ std::string InterfaceGrafica::ler_comando() {
         }
         const char *linha_c = linha.c_str();
         // SE O COMANDO NÃO FOR VÁLIDO ESCREVER EM VERMELHO
-        if(linha[0] != 'm') {
+        if(!isdigit(linha[0])) {
             wattron(_win, COLOR_PAIR(VERMELHO));
             mvwprintw(_win,pontoYinicial, pontoXinicial, "%s", linha_c);
             mvwprintw(_win,pontoYinicial, pontoXinicial+linha.size(), "%s", SMALL_CLEAR.c_str());

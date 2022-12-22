@@ -25,6 +25,7 @@
 Para jogar o Jogo de Damas desenvolvido nesse projeto, é essencial a leitura da explicação a seguir:
 
 ### Menu:
+
 <div align="center">
 <img src="https://user-images.githubusercontent.com/68508499/209154419-a3a75afd-2c2c-46f1-8398-e4203f558b4e.png" alt="Menu">
 </div>
@@ -38,7 +39,14 @@ Cada uma das funcionalidades acima podem ser descritas a seguir:
 * **Info**: ao ativar esse comando você será redirecionado para outra página que conterá um resumo das informações presentes aqui no readme, caso necessite de se relembrar de alguma informação importante
 * **Sair**: ao ativar esse comando você sairá do jogo
 
-Ademais, para ativar as funcionalidades presentes no menu é necessário se apertar 2 vezes as teclas concernentes às iniciais de cada funcionalidade (uma vez para ativar e outra para confirmar). Desse modo, por exemplo, se desejo Reiniciar o jogo, devo apertar duas vezes a tecla r minusculo, para Informações, duas vezes i e para Sair, duas vezes o s;
+Ademais, para ativar as funcionalidades presentes no menu é necessário se apertar 2 vezes as teclas concernentes às iniciais de cada funcionalidade (uma vez para ativar e outra para confirmar). Desse modo, por exemplo, se desejo Reiniciar o jogo, devo apertar duas vezes a tecla "_r_" minusculo, para Informações, duas vezes "_i_" e para Sair, duas vezes o "_s_";
 
-obs: Na página de informações, no menu haverá a funcionalidade Retornar para voltar para a página principal. Para ativá-la aperte duas vezes a letra r minuscula;
+obs: Na página de informações, no menu haverá a funcionalidade Retornar para voltar para a página principal. Para ativá-la aperte duas vezes a letra "_r_" minuscula;
 
+
+### Jogar:
+
+Ao longo do jogo você irá alternar entre sua jogada e a jogada do computador. Se você deseja registrar sua jogada, deverá, na sua vez, apertar a tecla "_j_" minuscula (inicial de jogada).
+
+Após isso digitará seu comando de jogada que deverá ser do formato:
+<center>m Xinicial Yinicial Xfinal Yfinal</center>
