@@ -1,5 +1,6 @@
 #include "../include/dama.hpp"
 
+Dama::Dama() {};
 Dama::Dama(int cor, Posicao_t posicao): Peca_t(cor, posicao){};
 
 bool Dama::verifica_movimento(Posicao_t novaPosicao){
