@@ -55,7 +55,7 @@ void Tabuleiro_t::atualizar_tabuleiro(Posicao_t novaPosicao, Peca_t & peca){
         (peca.get_cor() == Cores::PRETO && peca.get_posicao().linha == 0)) {
         
         dama = Dama(peca.get_cor(), peca.get_posicao());
-        int i;
+        size_t i;
         for (i = 0; i < _tabuleiro.size(); i++) {
             if (_tabuleiro[i] == peca) break;
         }

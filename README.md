@@ -20,5 +20,11 @@
 
 7. Eu, como **jogador**, desejo que o **computador faça jogadas coerentes**, para que **as partidas sejam competitivas**.
 
+## Funcionalidade do Jogo:
 
+Para jogar o Jogo de Damas desenvolvido nesse projeto, é essencial a leitura da explicação a seguir:
+
+### Menu:
+O menu do jogo constitui-se da barra com comandos aparente na parte superior da interface.
+![](../imgs/Menu.png)
 

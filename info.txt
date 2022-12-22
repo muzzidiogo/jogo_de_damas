@@ -12,3 +12,5 @@
                                       com numeros inteiros
 
       '!' : sair do modo "jogada"
+
+Para mais informações, leia o README.md
