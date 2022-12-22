@@ -28,6 +28,10 @@ bool Jogador_t::verifica_comando(std::string comando, int* index, Posicao_t* pos
     //Analisa pecano tabuleiro e posicao final
     for(size_t i=0;i<_tabuleiro->get_ptr_tabuleiro()->size();i++) {
         if(_tabuleiro->get_ptr_tabuleiro()->at(i) == Peca_t(Cores::BRANCO, Posicao_t{posicoes[1], posicoes[0]})){
+            if(_tabuleiro->verificar_posicao(Posicao_t{posicoes[3], posicoes[2]})
+              || _tabuleiro->verificar_pos_saiu_tabuleiro(Posicao_t{posicoes[3], posicoes[2]})) {
+                return false;
+            }
             *index = i;
             posFinal->coluna = posicoes[2];
             posFinal->linha= posicoes[3];

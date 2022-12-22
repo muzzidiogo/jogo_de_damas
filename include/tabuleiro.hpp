@@ -52,8 +52,14 @@ public:
     /// @return True, caso a captura seja valida, false caso contrario
     bool verifica_validade_captura(Peca_t peca, Movimento_t movimento);
 
+    /// @brief Faz com que o tabuleiro volte ao seu estado inicial
     void reiniciar_tabuleiro();
+
+    /// @brief Retorna o ponteiro para o vetor tabuleiro da classe
     std::vector<Peca_t>* get_ptr_tabuleiro();
+
+    /// @brief Modifica o tabuleiro para que seja usado em testes
+    /// @param tabuleiro o novo tabuleiro em que o _tabuleiro será modificado
     void set_tabuleiro_testes(std::vector<Peca_t> tabuleiro); 
 };
 

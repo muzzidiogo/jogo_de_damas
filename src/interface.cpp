@@ -58,12 +58,12 @@ void InterfaceGrafica::desenhar_main() {
         int coluna = peca.get_posicao().coluna+inicio;
         if(peca.get_cor() == Cores::PRETO) {
             wattron(_win, A_STANDOUT);
-            mvwprintw(_win, linha, coluna+(3*(coluna)), "_O_");
+            mvwprintw(_win, linha, coluna+(3*(coluna)), "_o_");
             wattroff(_win, A_STANDOUT);
         }
         else if(peca.get_cor() == Cores::BRANCO) {
             wattron(_win, A_STANDOUT);
-            mvwprintw(_win, linha, coluna+(3*(coluna)), "_X_");
+            mvwprintw(_win, linha, coluna+(3*(coluna)), "_x_");
             wattroff(_win, A_STANDOUT);
         }
     }
